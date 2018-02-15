@@ -6,6 +6,7 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -131,10 +132,9 @@ public class UITemplate implements UIComponent {
         primaryStage.setTitle(applicationTitle);
         primaryStage.setResizable(applicationTemplate.manager.getPropertyValueAsBoolean(IS_WINDOW_RESIZABLE.name()));
         appPane = new VBox();
-        appPane.getChildren().add(toolBar);
-
         primaryScene = windowWidth < 1 || windowHeight < 1 ? new Scene(appPane)
-                                                           : new Scene(appPane, windowWidth, windowHeight);
+                : new Scene(appPane, windowWidth, windowHeight);
+        appPane.getChildren().add(toolBar);
         primaryStage.getIcons().add(logo);
         primaryStage.setScene(primaryScene);
         primaryStage.show();

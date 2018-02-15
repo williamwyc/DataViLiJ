@@ -27,10 +27,10 @@ public class AppData implements DataComponent {
         // TODO: NOT A PART OF HW 1
     }
 
-    public void loadData(String dataString) {
+    public void loadData(String dataString) throws Exception {
+        processor.processString(dataString);
         // TODO for homework 1
     }
-
     @Override
     public void saveData(Path dataFilePath) {
         // TODO: NOT A PART OF HW 1

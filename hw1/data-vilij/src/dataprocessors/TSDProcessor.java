@@ -70,8 +70,9 @@ public final class TSDProcessor {
      *
      * @param chart the specified chart
      */
-    void toChartData(XYChart<Number, Number> chart) {
+    public void toChartData(XYChart<Number, Number> chart) {
         Set<String> labels = new HashSet<>(dataLabels.values());
+
         for (String label : labels) {
             XYChart.Series<Number, Number> series = new XYChart.Series<>();
             series.setName(label);
@@ -83,7 +84,8 @@ public final class TSDProcessor {
         }
     }
 
-    void clear() {
+
+    public void clear() {
         dataPoints.clear();
         dataLabels.clear();
     }
