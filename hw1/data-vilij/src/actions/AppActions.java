@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 import static java.lang.System.exit;
@@ -109,7 +110,7 @@ public final class AppActions implements ActionComponent {
         fileChooser.getExtensionFilters().add(filter);
         File file = fileChooser.showSaveDialog(applicationTemplate.getUIComponent().getPrimaryWindow());
         FileWriter fileWriter = new FileWriter(file);
-        fileWriter.write(text);
+        fileWriter.write(((AppUI)applicationTemplate.getUIComponent()).getTextArea().getText());
         fileWriter.close();
         // TODO for homework 1
         // TODO remove the placeholder line below after you have implemented this method

@@ -53,6 +53,7 @@ public final class AppUI extends UITemplate {
     private AppActions appActions;
     protected  String scrnshotPath = new String("");
     public ScatterChart<Number, Number> getChart() { return chart; }
+    public TextArea getTextArea(){return textArea;}
 
     public AppUI(Stage primaryStage, ApplicationTemplate applicationTemplate) {
         super(primaryStage, applicationTemplate);
@@ -172,4 +173,5 @@ public final class AppUI extends UITemplate {
         });
         // TODO for homework 1
     }
+
 }
