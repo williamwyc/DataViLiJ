@@ -1,0 +1,7 @@
+.chart-series-line {
+    -fx-stroke: transparent;
+}
+.chart-plot-background {
+    -fx-border-color: black;
+    -fx-border-width: 5px;
+}
