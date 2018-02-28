@@ -2,9 +2,15 @@ package actions;
 
 import dataprocessors.AppData;
 import javafx.application.Application;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
 import ui.AppUI;
 import ui.AppUI.*;
@@ -12,6 +18,8 @@ import vilij.components.ActionComponent;
 import vilij.components.ConfirmationDialog;
 import vilij.propertymanager.PropertyManager;
 import vilij.templates.ApplicationTemplate;
+
+import javax.imageio.ImageIO;
 
 import static settings.AppPropertyTypes.*;
 
@@ -35,9 +43,9 @@ public final class AppActions implements ActionComponent {
     /** The application to which this class of actions belongs. */
     private ApplicationTemplate applicationTemplate;
     /** Path to the data file currently active. */
-    Path dataFilePath;
-    String text = "";
+    Path dataFilePath = Paths.get("");
     ConfirmationDialog confirm = ConfirmationDialog.getDialog();
+    File file = new File(dataFilePath.toString());
     public AppActions(ApplicationTemplate applicationTemplate) {
         this.applicationTemplate = applicationTemplate;
     }
@@ -50,7 +58,7 @@ public final class AppActions implements ActionComponent {
                 try {
                     promptToSave();
                 } catch (IOException e) {
-                    e.printStackTrace();
+
                 }
 
             } else if (option.equals(ConfirmationDialog.Option.NO)) {
@@ -59,26 +67,27 @@ public final class AppActions implements ActionComponent {
                 confirm.close();
             }
         }
-
-
-
-        // TODO for homework 1
+        //for homework 1
     }
 
     @Override
     public void handleSaveRequest() {
+        applicationTemplate.getDataComponent().saveData(dataFilePath);
+        dataFilePath = ((AppData)applicationTemplate.getDataComponent()).getPath();
+        ((AppUI)applicationTemplate.getUIComponent()).getSaveButton().setDisable(true);
         // TODO: NOT A PART OF HW 1
     }
 
     @Override
     public void handleLoadRequest() {
+        applicationTemplate.getDataComponent().loadData(dataFilePath);
         // TODO: NOT A PART OF HW 1
     }
 
     @Override
     public void handleExitRequest() {
         exit(0);
-        // TODO for homework 1
+        //for homework 1
     }
 
     @Override
@@ -87,10 +96,15 @@ public final class AppActions implements ActionComponent {
     }
 
     public void handleScreenshotRequest() throws IOException {
+        LineChart chart = ((AppUI)applicationTemplate.getUIComponent()).getChart();
+        WritableImage image = chart.snapshot(new SnapshotParameters(),null);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Image");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("PNG","*.png");
+        fileChooser.getExtensionFilters().add(filter);
+        File file = fileChooser.showSaveDialog(applicationTemplate.getUIComponent().getPrimaryWindow());
+        ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
         // TODO: NOT A PART OF HW 1
-    }
-    public void setText(String text){
-        this.text=text;
     }
     /**
      * This helper method verifies that the user really wants to save their unsaved work, which they might not want to
@@ -112,8 +126,10 @@ public final class AppActions implements ActionComponent {
         FileWriter fileWriter = new FileWriter(file);
         fileWriter.write(((AppUI)applicationTemplate.getUIComponent()).getTextArea().getText());
         fileWriter.close();
-        // TODO for homework 1
-        // TODO remove the placeholder line below after you have implemented this method
+        dataFilePath = file.toPath();
+        ((AppUI)applicationTemplate.getUIComponent()).getSaveButton().setDisable(true);
+        // for homework 1
+        // remove the placeholder line below after you have implemented this method
         return false;
     }
 }

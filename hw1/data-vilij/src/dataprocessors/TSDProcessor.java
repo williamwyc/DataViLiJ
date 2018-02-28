@@ -2,7 +2,10 @@ package dataprocessors;
 
 import javafx.geometry.Point2D;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Tooltip;
+import vilij.components.ErrorDialog;
 
+import javax.tools.Tool;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Stream;
@@ -30,10 +33,12 @@ public final class TSDProcessor {
 
     private Map<String, String>  dataLabels;
     private Map<String, Point2D> dataPoints;
+    private Map<Point2D, String> dataNames;
 
     public TSDProcessor() {
         dataLabels = new HashMap<>();
         dataPoints = new HashMap<>();
+        dataNames = new HashMap<>();
     }
 
     /**
@@ -55,7 +60,9 @@ public final class TSDProcessor {
                       Point2D  point = new Point2D(Double.parseDouble(pair[0]), Double.parseDouble(pair[1]));
                       dataLabels.put(name, label);
                       dataPoints.put(name, point);
-                  } catch (Exception e) {
+                      dataNames.put(point,name);
+                  }
+                  catch (Exception e) {
                       errorMessage.setLength(0);
                       errorMessage.append(e.getClass().getSimpleName()).append(": ").append(e.getMessage());
                       hadAnError.set(true);
@@ -72,7 +79,10 @@ public final class TSDProcessor {
      */
     public void toChartData(XYChart<Number, Number> chart) {
         Set<String> labels = new HashSet<>(dataLabels.values());
-
+        double max = 0;
+        double min = 100;
+        double sum = 0;
+        double counter = 0;
         for (String label : labels) {
             XYChart.Series<Number, Number> series = new XYChart.Series<>();
             series.setName(label);
@@ -81,7 +91,30 @@ public final class TSDProcessor {
                 series.getData().add(new XYChart.Data<>(point.getX(), point.getY()));
             });
             chart.getData().add(series);
+            for (XYChart.Data<Number, Number> data : series.getData()) {
+                if(data.getXValue().doubleValue()>max){
+                    max = data.getXValue().doubleValue();
+                }
+                if(data.getXValue().doubleValue()<min){
+                    min = data.getXValue().doubleValue();
+                }
+                sum += data.getYValue().doubleValue();
+                counter += 1;
+                Point2D point = new Point2D(data.getXValue().doubleValue(),data.getYValue().doubleValue());
+                Tooltip tooltip = new Tooltip(dataNames.get(point));
+                Tooltip.install(data.getNode(),tooltip);
+            }
         }
+        double average = sum/counter ;
+        XYChart.Series<Number, Number> line= new XYChart.Series<>();
+        line.getData().add(new XYChart.Data<>(min,average));
+        line.getData().add(new XYChart.Data<>(max,average));
+        chart.getData().add(line);
+        chart.setLegendVisible(false);
+        line.getData().get(0).getNode().lookup(".chart-line-symbol").setStyle("-fx-background-color: transparent, transparent");
+        line.getData().get(1).getNode().lookup(".chart-line-symbol").setStyle("-fx-background-color: transparent, transparent");
+        line.setName("Average Line");
+        line.getNode().lookup(".chart-series-line").setStyle("-fx-stroke: red");
     }
 
 
