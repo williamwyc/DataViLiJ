@@ -5,3 +5,11 @@
     -fx-border-color: black;
     -fx-border-width: 5px;
 }
+.axis{
+    -fx-tick-length: 20;
+    -fx-minor-tick-length: 10;
+}
+.axis-tick-mark{
+    -fx-stroke: black;
+    -fx-stroke-width: 3;
+}

@@ -1,5 +1,7 @@
 package dataprocessors;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import ui.AppUI;
@@ -30,11 +32,13 @@ public class AppData implements DataComponent {
 
     private TSDProcessor        processor;
     private ApplicationTemplate applicationTemplate;
+    private TextArea            textareai;
     public Path path = Paths.get("");
 
     public AppData(ApplicationTemplate applicationTemplate) {
         this.processor = new TSDProcessor();
         this.applicationTemplate = applicationTemplate;
+        this.textareai = new TextArea();
     }
 
     @Override
@@ -45,11 +49,30 @@ public class AppData implements DataComponent {
             Hashtable label = new Hashtable();
             Scanner scanner = new Scanner(file);
             TextArea textarea = ((AppUI)applicationTemplate.getUIComponent()).getTextArea();
-            int linenumber = 1;
+            textarea.textProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                    int rows = newValue.split("\n").length;
+                    if(textareai.getText()!=null){
+                        String[] lines = textareai.getText().split("\n");
+                        if(rows<10&&lines[0]!=null) {
+                            textarea.appendText(lines[0]);
+                            if(lines.length==1){
+                                textareai.clear();
+                            }
+                            else{
+                                textareai.setText(textareai.getText().substring(textareai.getText().indexOf("\n")));
+                            }
+                        }
+                    }
+                }
+            });
+            int linenumber = 0;
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();
-                String newlabel = line.substring(0,line.indexOf("\t"));
+                String newlabel;
                 try{
+                    newlabel = line.substring(0,line.indexOf("\t"));
                     processor.processString(line);
                 } catch (Exception e) {
                     ErrorDialog error = ErrorDialog.getDialog();
@@ -66,14 +89,16 @@ public class AppData implements DataComponent {
                     textarea.clear();
                     break;
                 }
-                if(linenumber<=10) {
+                if(linenumber<10) {
                     linenumber++;
                     textarea.appendText(line + "\n");
                 }
                 else {
                     linenumber++;
+                    textareai.appendText(line + "\n");
                 }
             }
+            displayData();
             if(linenumber>10){
                 ErrorDialog error = ErrorDialog.getDialog();
                 error.show("Overloaded","Loaded data consists of "+linenumber+" lines. Showing only the first 10 in the text area.");
