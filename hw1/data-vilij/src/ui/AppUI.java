@@ -54,6 +54,7 @@ public final class AppUI extends UITemplate {
     public LineChart<Number, Number> getChart() { return chart; }
     public TextArea getTextArea(){return textArea;}
     public Button getSaveButton(){return saveButton;}
+    public Button getScrnshotButton(){return scrnshotButton;}
 
     public AppUI(Stage primaryStage, ApplicationTemplate applicationTemplate) {
         super(primaryStage, applicationTemplate);

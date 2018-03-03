@@ -49,24 +49,10 @@ public class AppData implements DataComponent {
             Hashtable label = new Hashtable();
             Scanner scanner = new Scanner(file);
             TextArea textarea = ((AppUI)applicationTemplate.getUIComponent()).getTextArea();
-            textarea.textProperty().addListener(new ChangeListener<String>() {
-                @Override
-                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                    int rows = newValue.split("\n").length;
-                    if(textareai.getText()!=null){
-                        String[] lines = textareai.getText().split("\n");
-                        if(rows<10&&lines[0]!=null) {
-                            textarea.appendText(lines[0]);
-                            if(lines.length==1){
-                                textareai.clear();
-                            }
-                            else{
-                                textareai.setText(textareai.getText().substring(textareai.getText().indexOf("\n")));
-                            }
-                        }
-                    }
-                }
-            });
+            textarea.clear();
+            textareai.clear();
+            processor.clear();
+            ((AppUI) applicationTemplate.getUIComponent()).getChart().getData().clear();
             int linenumber = 0;
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();
@@ -78,6 +64,9 @@ public class AppData implements DataComponent {
                     ErrorDialog error = ErrorDialog.getDialog();
                     error.show("Error","Line "+linenumber+" has wrong format of data");
                     textarea.clear();
+                    textareai.clear();
+                    processor.clear();
+                    ((AppUI) applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(true);
                     break;
                 }
                 if(!label.containsKey(newlabel)){
@@ -99,11 +88,31 @@ public class AppData implements DataComponent {
                 }
             }
             displayData();
+            ((AppUI) applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
             if(linenumber>10){
                 ErrorDialog error = ErrorDialog.getDialog();
                 error.show("Overloaded","Loaded data consists of "+linenumber+" lines. Showing only the first 10 in the text area.");
+
+                textarea.textProperty().addListener(new ChangeListener<String>() {
+                    @Override
+                    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                        int rows = newValue.split("\n").length;
+                        if(textareai.getText()!=null){
+                            String[] lines = textareai.getText().split("\n");
+                            if (rows<10&&lines[0]!=null) {
+                                textarea.appendText(lines[0]+"\n");
+                                if(lines.length==1){
+                                    textareai.clear();
+                                }
+                                else{
+                                    textareai.setText(textareai.getText().substring(textareai.getText().indexOf("\n")+1));
+                                }
+                            }
+                        }
+                    }
+                });
             }
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
 
         }
         // TODO: NOT A PART OF HW 1
