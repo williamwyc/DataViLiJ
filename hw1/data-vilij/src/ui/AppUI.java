@@ -6,10 +6,12 @@ import dataprocessors.TSDProcessor;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -46,22 +48,38 @@ public final class AppUI extends UITemplate {
     private Button                       displayButton ;  // workspace button to display data on the chart
     private TextArea                     textArea;       // text area for new data input
     private boolean                      hasNewText;     // whether or not the text area has any new data since last display
-    private Label                        label;
-    private CheckBox                     checkbox;
+    private TextArea                     loadArea;
+    private Label                       plotLabel;
+    private Label                       toggleLabel;
+    private ToggleGroup                 group;
+    private ToggleButton                clustering;
+    private ToggleButton                classification;
     private AppData appData;
     private AppActions appActions;
     protected  String scrnshotPath = new String("");
     public LineChart<Number, Number> getChart() { return chart; }
     public TextArea getTextArea(){return textArea;}
+    public TextArea getLoadArea(){return loadArea;}
     public Button getSaveButton(){return saveButton;}
     public Button getScrnshotButton(){return scrnshotButton;}
-
+    public void toggleGroupVisible(){
+        toggleLabel.setVisible(true);
+        clustering.setVisible(true);
+        classification.setVisible(true);
+    }
     public AppUI(Stage primaryStage, ApplicationTemplate applicationTemplate) {
         super(primaryStage, applicationTemplate);
         appData = new AppData(applicationTemplate);
         appActions = new AppActions(applicationTemplate);
         textArea = new TextArea();
+        loadArea = new TextArea();
         textArea.setMaxSize(400,300);
+        loadArea.setMaxSize(400,300);
+        textArea.setDisable(true);
+        loadArea.setEditable(false);
+        loadArea.setVisible(false);
+        textArea.lookup(".text-area").setStyle("-fx-background-color: white");
+        textArea.setVisible(false);
         textArea.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -85,25 +103,20 @@ public final class AppUI extends UITemplate {
         NumberAxis xAxis = new NumberAxis();
         NumberAxis yAxis = new NumberAxis();
         chart = new LineChart<>(xAxis,yAxis);
-        
         chart.setHorizontalGridLinesVisible(false);
         chart.setVerticalGridLinesVisible(false);
         chart.setTitle("Data Visualization");
         chart.setMaxSize(1000,1000);
-        label = new Label();
-        label.setText("Data File");
-        checkbox = new CheckBox();
-        checkbox.setText("Read Only");
-        checkbox.setOnAction(e->{
-            if(checkbox.isSelected()){
-                textArea.setEditable(false);
-                textArea.setDisable(true);
-            }
-            else{
-                textArea.setEditable(true);
-                textArea.setDisable(false);
-            }
-        });
+        chart.setVisible(false);
+        plotLabel = new Label("Plot: ");
+        toggleLabel = new Label("Algorithm Type");
+        toggleLabel.setVisible(false);
+        clustering = new ToggleButton("Clustering");
+        clustering.setVisible(false);
+        classification = new ToggleButton("Classification");
+        classification.setVisible(false);
+        clustering.setToggleGroup(group);
+        classification.setToggleGroup(group);
         this.applicationTemplate = applicationTemplate;
     }
 
@@ -124,12 +137,11 @@ public final class AppUI extends UITemplate {
         newButton = new Button();
         saveButton = new Button();
         loadButton = new Button();
-        printButton = new Button();
         exitButton = new Button();
         super.setToolBar(applicationTemplate);
         scrnshotButton = new Button();
         scrnshotButton = setToolbarButton(scrnshotPath,manager.getPropertyValue(SCREENSHOT_TOOLTIP.name()),true);
-        toolBar = new ToolBar(newButton, saveButton, loadButton, printButton, exitButton,scrnshotButton);
+        toolBar = new ToolBar(newButton ,loadButton ,saveButton , scrnshotButton, exitButton);
         // for homework 1
 
     }
@@ -170,18 +182,23 @@ public final class AppUI extends UITemplate {
 
     private void layout() {
         getPrimaryScene().getStylesheets().add("/UI.css");
-        VBox vbox = new VBox();
+        VBox left = new VBox();
+        VBox right = new VBox();
         HBox hbox = new HBox();
-        HBox labelBox = new HBox();
-        hbox.getChildren().add(vbox);
-        vbox.getChildren().add(labelBox);
+        hbox.getChildren().add(left);
+        hbox.getChildren().add(right);
+        hbox.setSpacing(20);
         appPane.getChildren().add(hbox);
-        labelBox.getChildren().add(label);
-        vbox.getChildren().add(textArea);
-        vbox.getChildren().add(displayButton);
-        vbox.getChildren().add(checkbox);
-        hbox.getChildren().add(getChart());
-        labelBox.setAlignment(Pos.CENTER);
+        left.getChildren().add(textArea);
+        left.getChildren().add(loadArea);
+        left.getChildren().add(toggleLabel);
+        left.getChildren().add(clustering);
+        left.getChildren().add(classification);
+        left.setAlignment(Pos.CENTER_LEFT);
+
+        left.setPadding(new Insets(10, 10, 0, 10));
+        right.getChildren().add(plotLabel);
+        right.getChildren().add(getChart());
         // TODO for homework 1
     }
 

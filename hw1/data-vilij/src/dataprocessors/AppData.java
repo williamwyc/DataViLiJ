@@ -16,6 +16,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Scanner;
 
@@ -32,13 +33,15 @@ public class AppData implements DataComponent {
 
     private TSDProcessor        processor;
     private ApplicationTemplate applicationTemplate;
-    private TextArea            textareai;
+    private ArrayList           list;
+    private ArrayList<String>   label;
     public Path path = Paths.get("");
 
     public AppData(ApplicationTemplate applicationTemplate) {
         this.processor = new TSDProcessor();
         this.applicationTemplate = applicationTemplate;
-        this.textareai = new TextArea();
+        this.list = new ArrayList();
+        this.label = new ArrayList<>();
     }
 
     @Override
@@ -46,37 +49,44 @@ public class AppData implements DataComponent {
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(applicationTemplate.getUIComponent().getPrimaryWindow());
         try {
-            Hashtable label = new Hashtable();
+            Hashtable instance = new Hashtable();
             Scanner scanner = new Scanner(file);
+            boolean correct = true;
             TextArea textarea = ((AppUI)applicationTemplate.getUIComponent()).getTextArea();
-            textarea.clear();
-            textareai.clear();
-            processor.clear();
+            TextArea loadarea = ((AppUI)applicationTemplate.getUIComponent()).getLoadArea();
+            clear();
             ((AppUI) applicationTemplate.getUIComponent()).getChart().getData().clear();
             int linenumber = 0;
+            int numlabel = 0;
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();
+                String newinstance;
                 String newlabel;
                 try{
-                    newlabel = line.substring(0,line.indexOf("\t"));
+                    newinstance = line.substring(0,line.indexOf("\t"));
+                    newlabel = line.substring(line.indexOf("\t")+1);
+                    newlabel = newlabel.substring(0,newlabel.indexOf("\t"));
                     processor.processString(line);
                 } catch (Exception e) {
+                    clear();
+                    correct = false;
                     ErrorDialog error = ErrorDialog.getDialog();
-                    error.show("Error","Line "+linenumber+" has wrong format of data");
-                    textarea.clear();
-                    textareai.clear();
-                    processor.clear();
-                    ((AppUI) applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(true);
+                    error.show("Error","The file has wrong format of data");
                     break;
                 }
-                if(!label.containsKey(newlabel)){
-                    label.put(newlabel,line);
+                if(!instance.containsKey(newinstance)){
+                    instance.put(newinstance,line);
                 }
                 else{
                     ErrorDialog error = ErrorDialog.getDialog();
-                    error.show("Error","Line "+linenumber+" "+newlabel+" is a duplicate");
-                    textarea.clear();
+                    error.show("Error","The file includes a duplicate instance: "+newinstance);
+                    clear();
+                    correct=false;
                     break;
+                }
+                if(!label.contains(newlabel)){
+                    label.add(newlabel);
+                    numlabel++;
                 }
                 if(linenumber<10) {
                     linenumber++;
@@ -84,12 +94,19 @@ public class AppData implements DataComponent {
                 }
                 else {
                     linenumber++;
-                    textareai.appendText(line + "\n");
+                    list.add(line + "\n");
                 }
             }
-            displayData();
-            ((AppUI) applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
-            if(linenumber>10){
+            if(correct) {
+                textarea.setVisible(true);
+                loadarea.setVisible(true);
+                loadarea.appendText(linenumber + " instances with " + numlabel + " labels loaded from:\n" + file.getPath() + "\nThe labels are:\n");
+                for (String label : label) {
+                    loadarea.appendText("-" + label + "\n");
+                }
+                ((AppUI) applicationTemplate.getUIComponent()).toggleGroupVisible();
+            }
+            /*if(linenumber>10){
                 ErrorDialog error = ErrorDialog.getDialog();
                 error.show("Overloaded","Loaded data consists of "+linenumber+" lines. Showing only the first 10 in the text area.");
 
@@ -111,7 +128,7 @@ public class AppData implements DataComponent {
                         }
                     }
                 });
-            }
+            }*/
         } catch (Exception e) {
 
         }
@@ -208,6 +225,14 @@ public class AppData implements DataComponent {
     @Override
     public void clear() {
         processor.clear();
+        TextArea textarea = ((AppUI)applicationTemplate.getUIComponent()).getTextArea();
+        TextArea loadarea = ((AppUI)applicationTemplate.getUIComponent()).getLoadArea();
+        textarea.clear();
+        loadarea.clear();
+        textarea.setVisible(false);
+        loadarea.setVisible(false);
+        ((AppUI) applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(true);
+        list.clear();
     }
 
     public void displayData() {

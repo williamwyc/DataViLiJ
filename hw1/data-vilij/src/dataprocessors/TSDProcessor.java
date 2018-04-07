@@ -54,6 +54,7 @@ public final class TSDProcessor {
               .map(line -> Arrays.asList(line.split("\t")))
               .forEach(list -> {
                   try {
+                      checkedname(tsdString);
                       String   name  = checkedname(list.get(0));
                       String   label = list.get(1);
                       String[] pair  = list.get(2).split(",");
