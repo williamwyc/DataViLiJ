@@ -2,6 +2,7 @@ package ui;
 
 import actions.AppActions;
 import dataprocessors.AppData;
+import dataprocessors.DataSet;
 import dataprocessors.TSDProcessor;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -13,6 +14,7 @@ import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import vilij.components.ConfirmationDialog;
@@ -52,25 +54,42 @@ public final class AppUI extends UITemplate {
     private Label                       plotLabel;
     private Label                       toggleLabel;
     private ToggleGroup                 group;
+    private ToggleGroup                 editDone;
     private ToggleButton                clustering;
     private ToggleButton                classification;
+    private ToggleButton                edit;
+    private ToggleButton                done;
+    private VBox                        left;
+    private RadioButton                 randomClustering;
+    private RadioButton                 randomClassification;
+    private ToggleGroup                 clusteringSet;
+    private ToggleGroup                 classificationSet;
     private AppData appData;
     private AppActions appActions;
+    private DataSet dataSet;
     protected  String scrnshotPath = new String("");
     public LineChart<Number, Number> getChart() { return chart; }
     public TextArea getTextArea(){return textArea;}
     public TextArea getLoadArea(){return loadArea;}
     public Button getSaveButton(){return saveButton;}
     public Button getScrnshotButton(){return scrnshotButton;}
+    public ToggleGroup getEditDone(){return editDone;}
+    public ToggleButton getClassification(){return classification;}
     public void toggleGroupVisible(){
         toggleLabel.setVisible(true);
         clustering.setVisible(true);
         classification.setVisible(true);
     }
+    public DataSet getDataSet(){return dataSet;}
+    public void setDataSet(DataSet dataSet){
+        this.dataSet = dataSet;
+    }
     public AppUI(Stage primaryStage, ApplicationTemplate applicationTemplate) {
         super(primaryStage, applicationTemplate);
         appData = new AppData(applicationTemplate);
         appActions = new AppActions(applicationTemplate);
+        dataSet = new DataSet();
+        left = new VBox();
         textArea = new TextArea();
         loadArea = new TextArea();
         textArea.setMaxSize(400,300);
@@ -78,28 +97,10 @@ public final class AppUI extends UITemplate {
         textArea.setDisable(true);
         loadArea.setEditable(false);
         loadArea.setVisible(false);
-        textArea.lookup(".text-area").setStyle("-fx-background-color: white");
         textArea.setVisible(false);
-        textArea.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if(newValue.equals("")){
-                    hasNewText = false;
-                    newButton.setDisable(!hasNewText);
-                    saveButton.setDisable(!hasNewText);}
-
-                else{
-                    hasNewText = true;
-                    newButton.setDisable(false);
-                    saveButton.setDisable(false); }
-                if(!oldValue.equals(newValue)){
-                    saveButton.setDisable(false);
-                }
-            }
-
-        });
-        displayButton = new Button();
-        displayButton.setText("Display");
+        textArea.setStyle("text-area-background: white;");
+        displayButton = new Button("RUN");
+        displayButton.setDisable(true);
         NumberAxis xAxis = new NumberAxis();
         NumberAxis yAxis = new NumberAxis();
         chart = new LineChart<>(xAxis,yAxis);
@@ -115,8 +116,58 @@ public final class AppUI extends UITemplate {
         clustering.setVisible(false);
         classification = new ToggleButton("Classification");
         classification.setVisible(false);
+        group = new ToggleGroup();
         clustering.setToggleGroup(group);
         classification.setToggleGroup(group);
+        randomClustering = new RadioButton("Random Clustering");
+        clusteringSet = new ToggleGroup();
+        randomClustering.setToggleGroup(clusteringSet);
+        randomClassification = new RadioButton("Random Classification");
+        classificationSet = new ToggleGroup();
+        randomClassification.setToggleGroup(classificationSet);
+        Button settingA = new Button("Setting");
+        Button settingB = new Button("Setting");
+        settingA.setOnAction(e->((AppActions)applicationTemplate.getActionComponent()).handleSettingRequest());
+        HBox radioClustering = new HBox(randomClustering,settingA);
+        HBox radioClassification = new HBox(randomClassification,settingB);
+        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) {
+                if(new_toggle!=null){
+                    left.getChildren().remove(toggleLabel);
+                    if(new_toggle == clustering){
+                        left.getChildren().remove(classification);
+                        clustering.setDisable(true);
+                        left.getChildren().add(radioClustering);
+                    }
+                    else{
+                        left.getChildren().remove(clustering);
+                        classification.setDisable(true);
+                        left.getChildren().add(radioClassification);
+                    }
+                }
+            }
+        });
+        clusteringSet.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) {
+                if(new_toggle!=null){
+                    left.getChildren().add(displayButton);
+                }
+            }
+        });
+        classificationSet.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) {
+                if(new_toggle!=null){
+                    left.getChildren().add(displayButton);
+                }
+            }
+        });
+        newButton.setDisable(false);
+        editDone = new ToggleGroup();
+        edit = new ToggleButton("Edit");
+        edit.setToggleGroup(editDone);
+        edit.setSelected(true);
+        done = new ToggleButton("Done");
+        done.setToggleGroup(editDone);
         this.applicationTemplate = applicationTemplate;
     }
 
@@ -150,6 +201,9 @@ public final class AppUI extends UITemplate {
     protected void setToolbarHandlers(ApplicationTemplate applicationTemplate) {
         applicationTemplate.setActionComponent(appActions);
         newButton.setOnAction(e -> {
+            HBox editDone = new HBox();
+            editDone.getChildren().addAll(edit,done);
+            left.getChildren().add(1,editDone);
             applicationTemplate.getActionComponent().handleNewRequest();
         });
         saveButton.setOnAction(e -> applicationTemplate.getActionComponent().handleSaveRequest());
@@ -182,7 +236,6 @@ public final class AppUI extends UITemplate {
 
     private void layout() {
         getPrimaryScene().getStylesheets().add("/UI.css");
-        VBox left = new VBox();
         VBox right = new VBox();
         HBox hbox = new HBox();
         hbox.getChildren().add(left);
@@ -195,7 +248,6 @@ public final class AppUI extends UITemplate {
         left.getChildren().add(clustering);
         left.getChildren().add(classification);
         left.setAlignment(Pos.CENTER_LEFT);
-
         left.setPadding(new Insets(10, 10, 0, 10));
         right.getChildren().add(plotLabel);
         right.getChildren().add(getChart());
@@ -210,10 +262,7 @@ public final class AppUI extends UITemplate {
                 appData.loadData(textArea.getText());
                 appData.displayData();
                 scrnshotButton.setDisable(false);
-            }
-            catch(TSDProcessor.InvalidDataNameException e){
-            }
-            catch(Exception e){
+            } catch(Exception e){
 
             }
         });

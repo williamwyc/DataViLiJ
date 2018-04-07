@@ -1,17 +1,23 @@
 package actions;
 
 import dataprocessors.AppData;
+import dataprocessors.DataSet;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.ScatterChart;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import ui.AppUI;
 import ui.AppUI.*;
 import vilij.components.ActionComponent;
@@ -46,12 +52,52 @@ public final class AppActions implements ActionComponent {
     Path dataFilePath = Paths.get("");
     ConfirmationDialog confirm = ConfirmationDialog.getDialog();
     File file = new File(dataFilePath.toString());
+    boolean correct = true;
+    public boolean getCorrect(){return correct;}
+    public void setCorrect(boolean correct){this.correct=correct;}
     public AppActions(ApplicationTemplate applicationTemplate) {
         this.applicationTemplate = applicationTemplate;
     }
     @Override
     public void handleNewRequest() {
-        confirm.show(applicationTemplate.manager.getPropertyValue(SAVE_UNSAVED_WORK_TITLE.name()),applicationTemplate.manager.getPropertyValue(SAVE_UNSAVED_WORK.name()));
+        TextArea textArea = ((AppUI)applicationTemplate.getUIComponent()).getTextArea();
+        textArea.setVisible(true);
+        textArea.setDisable(false);
+        textArea.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
+                if(newValue!=oldValue){
+                    ((AppUI)applicationTemplate.getUIComponent()).getSaveButton().setDisable(false);
+                }
+                if(newValue==null){
+                    ((AppUI)applicationTemplate.getUIComponent()).getSaveButton().setDisable(true);
+                }
+            }
+        });;
+        ToggleGroup editDone = ((AppUI)applicationTemplate.getUIComponent()).getEditDone();
+        editDone.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
+            public void changed(ObservableValue<? extends Toggle> ov,Toggle toggle, Toggle new_toggle){
+                if(new_toggle == editDone.getToggles().get(1)){
+                    ((AppData)applicationTemplate.getDataComponent()).loadData(textArea.getText());
+                    if(correct){
+                        ((AppUI) applicationTemplate.getUIComponent()).toggleGroupVisible();
+                        textArea.setDisable(true);
+                        editDone.getToggles().get(0).setSelected(false);
+                        editDone.getToggles().get(1).setSelected(true);
+                    }
+                    else{
+                        editDone.getToggles().get(0).setSelected(true);
+                        editDone.getToggles().get(1).setSelected(false);
+                    }
+                }
+                else{
+                    textArea.setDisable(false);
+                    editDone.getToggles().get(0).setSelected(true);
+                    editDone.getToggles().get(1).setSelected(false);
+                }
+            }
+        });
+        /*confirm.show(applicationTemplate.manager.getPropertyValue(SAVE_UNSAVED_WORK_TITLE.name()),applicationTemplate.manager.getPropertyValue(SAVE_UNSAVED_WORK.name()));
         ConfirmationDialog.Option option = confirm.getSelectedOption();
         if(option!=null) {
             if (option.equals(ConfirmationDialog.Option.YES)) {
@@ -67,6 +113,7 @@ public final class AppActions implements ActionComponent {
                 confirm.close();
             }
         }
+        */
         //for homework 1
     }
 
@@ -74,7 +121,6 @@ public final class AppActions implements ActionComponent {
     public void handleSaveRequest() {
         applicationTemplate.getDataComponent().saveData(dataFilePath);
         dataFilePath = ((AppData)applicationTemplate.getDataComponent()).getPath();
-        ((AppUI)applicationTemplate.getUIComponent()).getSaveButton().setDisable(true);
         // TODO: NOT A PART OF HW 1
     }
 
@@ -105,6 +151,25 @@ public final class AppActions implements ActionComponent {
         File file = fileChooser.showSaveDialog(applicationTemplate.getUIComponent().getPrimaryWindow());
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
         // TODO: NOT A PART OF HW 1
+    }
+    public void handleSettingRequest(){
+        try{
+            Stage stage = new Stage();
+            Pane pane = new Pane();
+            Scene scene = new Scene(pane,300,300);
+            stage.setScene(scene);
+            stage.setTitle("Algorithm Run Configuration");
+            VBox vbox = new VBox();
+            HBox iteration = new HBox();
+            Label iterationLabel = new Label("Max.Iterations:");
+            HBox interval = new HBox();
+            HBox continuous = new HBox();
+            vbox.getChildren().addAll(iteration,interval,continuous);
+            pane.getChildren().add(vbox);
+            stage.show();
+        }catch(Exception ex){
+
+        }
     }
     /**
      * This helper method verifies that the user really wants to save their unsaved work, which they might not want to

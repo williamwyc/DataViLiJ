@@ -14,11 +14,11 @@
     -fx-stroke-width: 3;
 }
 .text-area{
-    -fx-background-color: transparent;
+    text-area-background: transparent ;
 }
 .text-area .content {
-    -fx-background-color: transparent;
+    -fx-background-color: text-area-background ;
 }
 .text-area .scroll-pane{
-    -fx-background-color: transparent;
+    -fx-background-color: text-area-background ;
 }

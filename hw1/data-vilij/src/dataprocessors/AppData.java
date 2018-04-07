@@ -1,5 +1,6 @@
 package dataprocessors;
 
+import actions.AppActions;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextArea;
@@ -105,60 +106,93 @@ public class AppData implements DataComponent {
                     loadarea.appendText("-" + label + "\n");
                 }
                 ((AppUI) applicationTemplate.getUIComponent()).toggleGroupVisible();
-            }
-            /*if(linenumber>10){
-                ErrorDialog error = ErrorDialog.getDialog();
-                error.show("Overloaded","Loaded data consists of "+linenumber+" lines. Showing only the first 10 in the text area.");
+                if(label.size()==2&&!label.contains("")){
+                    ((AppUI) applicationTemplate.getUIComponent()).getClassification().setDisable(false);
+                }
+                else if(label.size()==3&&label.contains("")){
+                    ((AppUI) applicationTemplate.getUIComponent()).getClassification().setDisable(false);
+                }
+                else{
+                    ((AppUI) applicationTemplate.getUIComponent()).getClassification().setDisable(true);
+                }
+                try{
+                    DataSet dataSet = DataSet.fromTSDFile(dataFilePath);
+                    ((AppUI) applicationTemplate.getUIComponent()).setDataSet(dataSet);
+                }catch (Exception e){
 
-                textarea.textProperty().addListener(new ChangeListener<String>() {
-                    @Override
-                    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                        int rows = newValue.split("\n").length;
-                        if(textareai.getText()!=null){
-                            String[] lines = textareai.getText().split("\n");
-                            if (rows<10&&lines[0]!=null) {
-                                textarea.appendText(lines[0]+"\n");
-                                if(lines.length==1){
-                                    textareai.clear();
-                                }
-                                else{
-                                    textareai.setText(textareai.getText().substring(textareai.getText().indexOf("\n")+1));
-                                }
-                            }
-                        }
-                    }
-                });
-            }*/
+                }
+
+            }
+
         } catch (Exception e) {
 
         }
         // TODO: NOT A PART OF HW 1
     }
 
-    public void loadData(String dataString) throws Exception {
-        Boolean correct = true;
-        Hashtable label = new Hashtable();
+    public void loadData(String dataString) {
+        Hashtable instance = new Hashtable();
         String[] data = dataString.split("\n");
+        String newinstance;
+        String newlabel;
+        TextArea textarea = ((AppUI)applicationTemplate.getUIComponent()).getTextArea();
+        TextArea loadarea = ((AppUI)applicationTemplate.getUIComponent()).getLoadArea();
+        int numlabel = 0;
+        loadarea.clear();
+        label.clear();
         for(int i = 1;i<=data.length;i++){
             try{
+                newinstance = data[i-1].substring(0,data[i-1].indexOf("\t"));
+                newlabel = data[i-1].substring(data[i-1].indexOf("\t")+1);
+                newlabel = newlabel.substring(0,newlabel.indexOf("\t"));
                 processor.processString(data[i-1]);
             } catch (Exception e) {
                 ErrorDialog error = ErrorDialog.getDialog();
-                error.show("Error","Line "+i+" has wrong format of data");
-                throw new Exception();
+                error.show("Error","The file has wrong format of data");
+                ((AppActions)applicationTemplate.getActionComponent()).setCorrect(false);
+                break;
             }
+            if(!instance.containsKey(newinstance)){
+                instance.put(newinstance,data[i-1]);
+            }
+            else{
+                ErrorDialog error = ErrorDialog.getDialog();
+                error.show("Error","The file includes a duplicate instance: "+newinstance);
+                ((AppActions)applicationTemplate.getActionComponent()).setCorrect(false);;
+                loadarea.clear();
+                break;
+            }
+            if(!label.contains(newlabel)){
+                label.add(newlabel);
+                numlabel++;
+            }
+
         }
-        if(correct){
+        if(((AppActions)applicationTemplate.getActionComponent()).getCorrect()) {
+            textarea.setVisible(true);
+            loadarea.setVisible(true);
+            DataSet dataSet = new DataSet();
             for(int i = 1;i<=data.length;i++){
-                String newlabel = data[i-1].substring(0,data[i-1].indexOf("\t"));
-                if(!label.containsKey(newlabel)){
-                    label.put(newlabel,data[i-1]);
+                try {
+                    dataSet.addInstance(data[i-1]);
+                } catch (Exception e){
+
                 }
-                else{
-                    ErrorDialog error = ErrorDialog.getDialog();
-                    error.show("Error",newlabel+" is a duplicate");
-                    throw new TSDProcessor.InvalidDataNameException("");
-                }
+            }
+            ((AppUI) applicationTemplate.getUIComponent()).setDataSet(dataSet);
+            loadarea.appendText(data.length + " instances with " + numlabel + " labels.\nThe labels are:\n");
+            for (String label : label) {
+                loadarea.appendText("-" + label + "\n");
+            }
+            ((AppUI) applicationTemplate.getUIComponent()).toggleGroupVisible();
+            if(label.size()==2&&!label.contains("")){
+                ((AppUI) applicationTemplate.getUIComponent()).getClassification().setDisable(false);
+            }
+            else if(label.size()==3&&label.contains("")){
+                ((AppUI) applicationTemplate.getUIComponent()).getClassification().setDisable(false);
+            }
+            else{
+                ((AppUI) applicationTemplate.getUIComponent()).getClassification().setDisable(true);
             }
         }
         // for homework 1
@@ -206,14 +240,17 @@ public class AppData implements DataComponent {
                 FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(applicationTemplate.manager.getPropertyValue(DATA_FILE_EXT_DESC.name()),applicationTemplate.manager.getPropertyValue(DATA_FILE_EXT.name()));
                 fileChooser.getExtensionFilters().add(filter);
                 file = fileChooser.showSaveDialog(applicationTemplate.getUIComponent().getPrimaryWindow());
-                try {
+                if(file!=null) {
+                    try {
 
-                    FileWriter fileWriter = new FileWriter(file);
-                    fileWriter.write(((AppUI)applicationTemplate.getUIComponent()).getTextArea().getText());
-                    fileWriter.close();
-                    path = Paths.get(file.getPath());
-                } catch (IOException e) {
+                        FileWriter fileWriter = new FileWriter(file);
+                        fileWriter.write(((AppUI) applicationTemplate.getUIComponent()).getTextArea().getText());
+                        fileWriter.close();
+                        path = Paths.get(file.getPath());
+                        ((AppUI)applicationTemplate.getUIComponent()).getSaveButton().setDisable(true);
+                    } catch (IOException e) {
 
+                    }
                 }
             }
         }
@@ -233,6 +270,7 @@ public class AppData implements DataComponent {
         loadarea.setVisible(false);
         ((AppUI) applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(true);
         list.clear();
+        label.clear();
     }
 
     public void displayData() {
