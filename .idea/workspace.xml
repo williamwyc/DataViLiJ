@@ -4,12 +4,8 @@
     <list default="true" id="77ae2b56-4aa9-4de2-ba5a-c076945186d1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/actions/AppActions.java" afterPath="$PROJECT_DIR$/hw1/data-vilij/src/actions/AppActions.java" />
-      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/AppData.java" afterPath="$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/AppData.java" />
       <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java" afterPath="$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java" />
-      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/actions/AppActions.class" afterPath="$PROJECT_DIR$/hw1/out/production/cse219homework/actions/AppActions.class" />
-      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/dataprocessors/AppData.class" afterPath="$PROJECT_DIR$/hw1/out/production/cse219homework/dataprocessors/AppData.class" />
-      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/ui/AppUI$1.class" afterPath="$PROJECT_DIR$/hw1/out/production/cse219homework/ui/AppUI$1.class" />
-      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/ui/AppUI.class" afterPath="$PROJECT_DIR$/hw1/out/production/cse219homework/ui/AppUI.class" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,24 +29,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppActions.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AppActions.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/actions/AppActions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-337">
-              <caret line="117" column="85" lean-forward="false" selection-start-line="117" selection-start-column="85" selection-end-line="117" selection-end-column="85" />
+            <state relative-caret-position="158">
+              <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AppUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="140" column="48" lean-forward="true" selection-start-line="140" selection-start-column="48" selection-end-line="140" selection-end-column="48" />
+            <state relative-caret-position="158">
+              <caret line="87" column="19" lean-forward="false" selection-start-line="87" selection-start-column="19" selection-end-line="87" selection-end-column="19" />
               <folding>
-                <element signature="e#4118#4119#0" expanded="true" />
-                <element signature="e#4156#4157#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#3814#3815#0" expanded="true" />
+                <element signature="e#3852#3853#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,9 +100,9 @@
         <option value="$PROJECT_DIR$/hw1/data-vilij/resources/UI.css" />
         <option value="$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/DataSet.java" />
         <option value="$PROJECT_DIR$/hw1/data-vilij/src/ui/RunConfigurationUI.java" />
-        <option value="$PROJECT_DIR$/hw1/data-vilij/src/actions/AppActions.java" />
         <option value="$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/AppData.java" />
         <option value="$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java" />
+        <option value="$PROJECT_DIR$/hw1/data-vilij/src/actions/AppActions.java" />
       </list>
     </option>
   </component>
@@ -437,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523141752968</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Use Case 6-7">
+      <created>1523633269330</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1523633269330</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -515,7 +519,8 @@
     <MESSAGE value="HW2" />
     <MESSAGE value="Use case 1 &amp; 2" />
     <MESSAGE value="Use case 3-5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Use case 3-5" />
+    <MESSAGE value="Use Case 6-7" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use Case 6-7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -613,8 +618,9 @@
         <state relative-caret-position="2240">
           <caret line="112" column="8" lean-forward="true" selection-start-line="112" selection-start-column="8" selection-end-line="112" selection-end-column="8" />
           <folding>
-            <element signature="e#4118#4119#0" expanded="true" />
-            <element signature="e#4156#4157#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3814#3815#0" expanded="true" />
+            <element signature="e#3852#3853#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -664,8 +670,9 @@
         <state relative-caret-position="3840">
           <caret line="192" column="38" lean-forward="false" selection-start-line="192" selection-start-column="38" selection-end-line="192" selection-end-column="38" />
           <folding>
-            <element signature="e#4118#4119#0" expanded="true" />
-            <element signature="e#4156#4157#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3814#3815#0" expanded="true" />
+            <element signature="e#3852#3853#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -715,8 +722,9 @@
         <state relative-caret-position="3840">
           <caret line="192" column="38" lean-forward="true" selection-start-line="192" selection-start-column="38" selection-end-line="192" selection-end-column="38" />
           <folding>
-            <element signature="e#4118#4119#0" expanded="true" />
-            <element signature="e#4156#4157#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3814#3815#0" expanded="true" />
+            <element signature="e#3852#3853#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -799,8 +807,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#4118#4119#0" expanded="true" />
-            <element signature="e#4156#4157#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3814#3815#0" expanded="true" />
+            <element signature="e#3852#3853#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -892,14 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/actions/AppActions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
-          <caret line="117" column="85" lean-forward="false" selection-start-line="117" selection-start-column="85" selection-end-line="117" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/AppData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
@@ -913,12 +914,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="140" column="48" lean-forward="true" selection-start-line="140" selection-start-column="48" selection-end-line="140" selection-end-column="48" />
+        <state relative-caret-position="158">
+          <caret line="87" column="19" lean-forward="false" selection-start-line="87" selection-start-column="19" selection-end-line="87" selection-end-column="19" />
           <folding>
-            <element signature="e#4118#4119#0" expanded="true" />
-            <element signature="e#4156#4157#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3814#3815#0" expanded="true" />
+            <element signature="e#3852#3853#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/actions/AppActions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

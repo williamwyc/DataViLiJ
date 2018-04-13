@@ -55,7 +55,7 @@ public final class AppActions implements ActionComponent {
     Path dataFilePath = Paths.get("");
     ConfirmationDialog confirm = ConfirmationDialog.getDialog();
     File file = new File(dataFilePath.toString());
-    boolean correct = true;
+    private boolean correct = true;
     public boolean getCorrect(){return correct;}
     public void setCorrect(boolean correct){this.correct=correct;}
     public AppActions(ApplicationTemplate applicationTemplate) {
@@ -69,38 +69,33 @@ public final class AppActions implements ActionComponent {
         textArea.clear();
         loadArea.clear();
         textArea.setDisable(false);
-        textArea.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
-                if(newValue!=oldValue){
-                    ((AppUI)applicationTemplate.getUIComponent()).getSaveButton().setDisable(false);
-                }
-                if(newValue==null){
-                    ((AppUI)applicationTemplate.getUIComponent()).getSaveButton().setDisable(true);
-                }
+        textArea.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue!=oldValue){
+                ((AppUI)applicationTemplate.getUIComponent()).getSaveButton().setDisable(false);
             }
-        });;
+            if(newValue==null){
+                ((AppUI)applicationTemplate.getUIComponent()).getSaveButton().setDisable(true);
+            }
+        });
         ToggleGroup editDone = ((AppUI)applicationTemplate.getUIComponent()).getEditDone();
-        editDone.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
-            public void changed(ObservableValue<? extends Toggle> ov,Toggle toggle, Toggle new_toggle){
-                if(new_toggle == editDone.getToggles().get(1)){
-                    ((AppData)applicationTemplate.getDataComponent()).loadData(textArea.getText());
-                    if(correct){
-                        ((AppUI) applicationTemplate.getUIComponent()).toggleGroupVisible();
-                        textArea.setDisable(true);
-                        editDone.getToggles().get(0).setSelected(false);
-                        editDone.getToggles().get(1).setSelected(true);
-                    }
-                    else{
-                        editDone.getToggles().get(0).setSelected(true);
-                        editDone.getToggles().get(1).setSelected(false);
-                    }
+        editDone.selectedToggleProperty().addListener((ov, toggle, new_toggle) -> {
+            if(new_toggle == editDone.getToggles().get(1)){
+                ((AppData)applicationTemplate.getDataComponent()).loadData(textArea.getText());
+                if(correct){
+                    ((AppUI) applicationTemplate.getUIComponent()).toggleGroupVisible();
+                    textArea.setDisable(true);
+                    editDone.getToggles().get(0).setSelected(false);
+                    editDone.getToggles().get(1).setSelected(true);
                 }
                 else{
-                    textArea.setDisable(false);
                     editDone.getToggles().get(0).setSelected(true);
                     editDone.getToggles().get(1).setSelected(false);
                 }
+            }
+            else{
+                textArea.setDisable(false);
+                editDone.getToggles().get(0).setSelected(true);
+                editDone.getToggles().get(1).setSelected(false);
             }
         });
 

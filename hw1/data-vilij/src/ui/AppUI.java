@@ -3,36 +3,29 @@ package ui;
 import actions.AppActions;
 import dataprocessors.AppData;
 import dataprocessors.DataSet;
-import dataprocessors.TSDProcessor;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import vilij.components.ConfirmationDialog;
 import vilij.components.ErrorDialog;
 import vilij.propertymanager.PropertyManager;
 import vilij.templates.ApplicationTemplate;
 import vilij.templates.UITemplate;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static settings.AppPropertyTypes.DATA_RESOURCE_PATH;
 import static settings.AppPropertyTypes.SCREENSHOT_ICON;
 import static settings.AppPropertyTypes.SCREENSHOT_TOOLTIP;
 import static vilij.settings.PropertyTypes.GUI_RESOURCE_PATH;
 import static vilij.settings.PropertyTypes.ICONS_RESOURCE_PATH;
-import static vilij.settings.PropertyTypes.NEW_TOOLTIP;
 
 /**
  * This is the application's user interface implementation.
@@ -143,25 +136,23 @@ public final class AppUI extends UITemplate {
         settingB.setOnAction(e->showSettingWindow(iterationText2,intervalText2,continuousBox2));
         HBox radioClustering = new HBox(randomClustering,settingA);
         HBox radioClassification = new HBox(randomClassification,settingB);
-        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) {
-                if(new_toggle!=null){
-                    if(new_toggle == clustering){
-                        clustering.setDisable(true);
-                        if(left.getChildren().contains(radioClassification)){
-                            left.getChildren().remove(radioClassification);
-                            classification.setDisable(false);
-                        }
-                        left.getChildren().add(radioClustering);
+        group.selectedToggleProperty().addListener((ov, toggle, new_toggle) -> {
+            if(new_toggle!=null){
+                if(new_toggle == clustering){
+                    clustering.setDisable(true);
+                    if(left.getChildren().contains(radioClassification)){
+                        left.getChildren().remove(radioClassification);
+                        classification.setDisable(false);
                     }
-                    else{
-                        classification.setDisable(true);
-                        if(left.getChildren().contains(radioClustering)){
-                            left.getChildren().remove(radioClustering);
-                            clustering.setDisable(false);
-                        }
-                        left.getChildren().add(radioClassification);
+                    left.getChildren().add(radioClustering);
+                }
+                else{
+                    classification.setDisable(true);
+                    if(left.getChildren().contains(radioClustering)){
+                        left.getChildren().remove(radioClustering);
+                        clustering.setDisable(false);
                     }
+                    left.getChildren().add(radioClassification);
                 }
             }
         });
@@ -226,9 +217,9 @@ public final class AppUI extends UITemplate {
         printButton.setOnAction(e -> applicationTemplate.getActionComponent().handlePrintRequest());
         scrnshotButton.setOnAction(e -> {
             try {
-                ((AppActions)applicationTemplate.getActionComponent()).handleScreenshotRequest();
-            }catch(IOException e1){
-
+                ((AppActions) applicationTemplate.getActionComponent()).handleScreenshotRequest();
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
         });
     }
@@ -245,7 +236,6 @@ public final class AppUI extends UITemplate {
         chart.getData().clear();
         textArea.clear();
         scrnshotButton.setDisable(true);
-        // TODO for homework 1
     }
 
     private void layout() {
@@ -265,7 +255,6 @@ public final class AppUI extends UITemplate {
         left.setPadding(new Insets(10, 10, 0, 10));
         right.getChildren().add(plotLabel);
         right.getChildren().add(getChart());
-        // TODO for homework 1
     }
 
     private void setWorkspaceActions() {
