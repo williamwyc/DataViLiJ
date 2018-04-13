@@ -6,6 +6,8 @@ import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.LineChart;
@@ -16,6 +18,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import ui.AppUI;
@@ -61,7 +64,10 @@ public final class AppActions implements ActionComponent {
     @Override
     public void handleNewRequest() {
         TextArea textArea = ((AppUI)applicationTemplate.getUIComponent()).getTextArea();
+        TextArea loadArea = ((AppUI)applicationTemplate.getUIComponent()).getLoadArea();
         textArea.setVisible(true);
+        textArea.clear();
+        loadArea.clear();
         textArea.setDisable(false);
         textArea.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -97,24 +103,7 @@ public final class AppActions implements ActionComponent {
                 }
             }
         });
-        /*confirm.show(applicationTemplate.manager.getPropertyValue(SAVE_UNSAVED_WORK_TITLE.name()),applicationTemplate.manager.getPropertyValue(SAVE_UNSAVED_WORK.name()));
-        ConfirmationDialog.Option option = confirm.getSelectedOption();
-        if(option!=null) {
-            if (option.equals(ConfirmationDialog.Option.YES)) {
-                try {
-                    promptToSave();
-                } catch (IOException e) {
 
-                }
-
-            } else if (option.equals(ConfirmationDialog.Option.NO)) {
-                applicationTemplate.getUIComponent().clear();
-            } else {
-                confirm.close();
-            }
-        }
-        */
-        //for homework 1
     }
 
     @Override
@@ -126,6 +115,7 @@ public final class AppActions implements ActionComponent {
 
     @Override
     public void handleLoadRequest() {
+        ((AppUI)applicationTemplate.getUIComponent()).getTextArea().setDisable(true);
         applicationTemplate.getDataComponent().loadData(dataFilePath);
         // TODO: NOT A PART OF HW 1
     }
@@ -152,25 +142,7 @@ public final class AppActions implements ActionComponent {
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
         // TODO: NOT A PART OF HW 1
     }
-    public void handleSettingRequest(){
-        try{
-            Stage stage = new Stage();
-            Pane pane = new Pane();
-            Scene scene = new Scene(pane,300,300);
-            stage.setScene(scene);
-            stage.setTitle("Algorithm Run Configuration");
-            VBox vbox = new VBox();
-            HBox iteration = new HBox();
-            Label iterationLabel = new Label("Max.Iterations:");
-            HBox interval = new HBox();
-            HBox continuous = new HBox();
-            vbox.getChildren().addAll(iteration,interval,continuous);
-            pane.getChildren().add(vbox);
-            stage.show();
-        }catch(Exception ex){
 
-        }
-    }
     /**
      * This helper method verifies that the user really wants to save their unsaved work, which they might not want to
      * do. The user will be presented with three options:

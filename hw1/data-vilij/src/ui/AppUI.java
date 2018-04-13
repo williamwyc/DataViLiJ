@@ -67,6 +67,18 @@ public final class AppUI extends UITemplate {
     private AppData appData;
     private AppActions appActions;
     private DataSet dataSet;
+
+    private Label iterationLabel = new Label("Max.Iterations:");
+    private TextField iterationText = new TextField();
+    private TextField iterationText2 = new TextField();
+    private Label intervalLabel = new Label("Update Interval:");
+    private TextField intervalText = new TextField();
+    private TextField intervalText2 = new TextField();
+    private Label continuousLabel = new Label("Continuous Run?");
+    private CheckBox continuousBox = new CheckBox();
+    private CheckBox continuousBox2 = new CheckBox();
+
+
     protected  String scrnshotPath = new String("");
     public LineChart<Number, Number> getChart() { return chart; }
     public TextArea getTextArea(){return textArea;}
@@ -127,38 +139,40 @@ public final class AppUI extends UITemplate {
         randomClassification.setToggleGroup(classificationSet);
         Button settingA = new Button("Setting");
         Button settingB = new Button("Setting");
-        settingA.setOnAction(e->((AppActions)applicationTemplate.getActionComponent()).handleSettingRequest());
+        settingA.setOnAction(e->showClusteringSettingWindow(iterationText,intervalText,continuousBox));
+        settingB.setOnAction(e->showSettingWindow(iterationText2,intervalText2,continuousBox2));
         HBox radioClustering = new HBox(randomClustering,settingA);
         HBox radioClassification = new HBox(randomClassification,settingB);
         group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) {
                 if(new_toggle!=null){
-                    left.getChildren().remove(toggleLabel);
                     if(new_toggle == clustering){
-                        left.getChildren().remove(classification);
                         clustering.setDisable(true);
+                        if(left.getChildren().contains(radioClassification)){
+                            left.getChildren().remove(radioClassification);
+                            classification.setDisable(false);
+                        }
                         left.getChildren().add(radioClustering);
                     }
                     else{
-                        left.getChildren().remove(clustering);
                         classification.setDisable(true);
+                        if(left.getChildren().contains(radioClustering)){
+                            left.getChildren().remove(radioClustering);
+                            clustering.setDisable(false);
+                        }
                         left.getChildren().add(radioClassification);
                     }
                 }
             }
         });
-        clusteringSet.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) {
-                if(new_toggle!=null){
-                    left.getChildren().add(displayButton);
-                }
+        clusteringSet.selectedToggleProperty().addListener((ov, toggle, new_toggle) -> {
+            if(new_toggle!=null){
+                left.getChildren().add(displayButton);
             }
         });
-        classificationSet.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) {
-                if(new_toggle!=null){
-                    left.getChildren().add(displayButton);
-                }
+        classificationSet.selectedToggleProperty().addListener((ov, toggle, new_toggle) -> {
+            if(new_toggle!=null){
+                left.getChildren().add(displayButton);
             }
         });
         newButton.setDisable(false);
@@ -213,7 +227,7 @@ public final class AppUI extends UITemplate {
         scrnshotButton.setOnAction(e -> {
             try {
                 ((AppActions)applicationTemplate.getActionComponent()).handleScreenshotRequest();
-            } catch (IOException e1) {
+            }catch(IOException e1){
 
             }
         });
@@ -256,17 +270,162 @@ public final class AppUI extends UITemplate {
 
     private void setWorkspaceActions() {
         displayButton.setOnAction((event) -> {
-            try {
-                appData.clear();
-                chart.getData().clear();
-                appData.loadData(textArea.getText());
-                appData.displayData();
-                scrnshotButton.setDisable(false);
-            } catch(Exception e){
 
+        });
+
+    }
+    private void showSettingWindow(TextField iterationText, TextField intervalText, CheckBox continuousBox){
+        Stage stage = new Stage();
+        Pane pane = new Pane();
+        Scene scene = new Scene(pane,300,300);
+        stage.setScene(scene);
+        stage.setTitle("Algorithm Run Configuration");
+        VBox vbox = new VBox();
+        HBox iteration = new HBox();
+        iteration.getChildren().addAll(iterationLabel,iterationText);
+        HBox interval = new HBox();
+        interval.getChildren().addAll(intervalLabel,intervalText);
+        HBox continuous = new HBox();
+        continuous.getChildren().addAll(continuousLabel,continuousBox);
+        vbox.getChildren().addAll(iteration,interval,continuous);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setPadding(new Insets(80,100,100,50));
+        vbox.setSpacing(20);
+        pane.getChildren().add(vbox);
+        stage.setOnCloseRequest(e->{
+            if(iterationText.getText()!=null){
+                try{
+                    int i = Integer.parseInt(iterationText.getText());
+                    if(i<=0){
+                        throw new Exception();
+                    }
+                }
+                catch(Exception es){
+                    iterationText.setText("1");
+                    ErrorDialog errorDialog = ErrorDialog.getDialog();
+                    errorDialog.show("Invalid Input","The iteration value is invalid. The value is automatically changed to 1");
+                }
+                try{
+                    int i = Integer.parseInt(intervalText.getText());
+                    if(i<=0){
+                        throw new Exception();
+                    }
+                } catch (Exception e1) {
+                    intervalText.setText("1");
+                    ErrorDialog errorDialog = ErrorDialog.getDialog();
+                    errorDialog.show("Invalid Input","The interval value is invalid. The value is automatically changed to 1");
+                }
             }
         });
-        // TODO for homework 1
+        iterationText.textProperty().addListener((observable, oldValue, newValue) -> {
+            try{
+                int i = Integer.parseInt(newValue);
+                if(i<=0){
+                    throw new Exception();
+                }
+                int j = Integer.parseInt(intervalText.getText());
+                if(j<=0){
+                    throw new Exception();
+                }
+                displayButton.setDisable(false);
+            }catch(Exception e){
+                displayButton.setDisable(true);
+            }
+        });
+        intervalText.textProperty().addListener((observable, oldValue, newValue) -> {
+            try{
+                int i = Integer.parseInt(newValue);
+                if(i<=0){
+                    throw new Exception();
+                }
+                int j = Integer.parseInt(iterationText.getText());
+                if(j<=0){
+                    throw new Exception();
+                }
+                displayButton.setDisable(false);
+            }catch(Exception e){
+                displayButton.setDisable(true);
+            }
+        });
+        stage.show();
     }
-
+    private void showClusteringSettingWindow(TextField iterationText, TextField intervalText, CheckBox continuousBox){
+        Stage stage = new Stage();
+        Pane pane = new Pane();
+        Scene scene = new Scene(pane,300,300);
+        stage.setScene(scene);
+        stage.setTitle("Algorithm Run Configuration");
+        VBox vbox = new VBox();
+        HBox iteration = new HBox();
+        iteration.getChildren().addAll(iterationLabel,iterationText);
+        HBox interval = new HBox();
+        interval.getChildren().addAll(intervalLabel,intervalText);
+        HBox continuous = new HBox();
+        continuous.getChildren().addAll(continuousLabel,continuousBox);
+        vbox.getChildren().addAll(iteration,interval,continuous);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setPadding(new Insets(80,100,100,50));
+        vbox.setSpacing(20);
+        pane.getChildren().add(vbox);
+        ArrayList<String> label = ((AppData)applicationTemplate.getDataComponent()).getLabelList();
+        int num = label.size();
+        Label information = new Label("The number of cluster:"+num);
+        vbox.getChildren().add(information);
+        stage.setOnCloseRequest(e->{
+            if(iterationText.getText()!=null){
+                try{
+                    int i = Integer.parseInt(iterationText.getText());
+                    if(i<=0){
+                        throw new Exception();
+                    }
+                }
+                catch(Exception es){
+                    iterationText.setText("1");
+                    ErrorDialog errorDialog = ErrorDialog.getDialog();
+                    errorDialog.show("Invalid Input","The iteration value is invalid. The value is automatically changed to 1");
+                }
+                try{
+                    int i = Integer.parseInt(intervalText.getText());
+                    if(i<=0){
+                        throw new Exception();
+                    }
+                } catch (Exception e1) {
+                    intervalText.setText("1");
+                    ErrorDialog errorDialog = ErrorDialog.getDialog();
+                    errorDialog.show("Invalid Input","The interval value is invalid. The value is automatically changed to 1");
+                }
+            }
+        });
+        iterationText.textProperty().addListener((observable, oldValue, newValue) -> {
+            try{
+                int i = Integer.parseInt(newValue);
+                if(i<=0){
+                    throw new Exception();
+                }
+                int j = Integer.parseInt(intervalText.getText());
+                if(j<=0){
+                    throw new Exception();
+                }
+                displayButton.setDisable(false);
+            }catch(Exception e){
+                displayButton.setDisable(true);
+            }
+        });
+        intervalText.textProperty().addListener((observable, oldValue, newValue) -> {
+            try{
+                int i = Integer.parseInt(newValue);
+                if(i<=0){
+                    throw new Exception();
+                }
+                int j = Integer.parseInt(iterationText.getText());
+                if(j<=0){
+                    throw new Exception();
+                }
+                displayButton.setDisable(false);
+            }catch(Exception e){
+                displayButton.setDisable(true);
+            }
+        });
+        stage.show();
+    }
 }

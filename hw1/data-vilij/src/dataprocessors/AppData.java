@@ -44,11 +44,14 @@ public class AppData implements DataComponent {
         this.list = new ArrayList();
         this.label = new ArrayList<>();
     }
-
+    public ArrayList<String> getLabelList(){
+        return label;
+    }
     @Override
     public void loadData(Path dataFilePath) {
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(applicationTemplate.getUIComponent().getPrimaryWindow());
+        ((AppActions)applicationTemplate.getActionComponent()).setCorrect(true);
         try {
             Hashtable instance = new Hashtable();
             Scanner scanner = new Scanner(file);
@@ -140,6 +143,7 @@ public class AppData implements DataComponent {
         int numlabel = 0;
         loadarea.clear();
         label.clear();
+        ((AppActions)applicationTemplate.getActionComponent()).setCorrect(true);
         for(int i = 1;i<=data.length;i++){
             try{
                 newinstance = data[i-1].substring(0,data[i-1].indexOf("\t"));
@@ -158,7 +162,7 @@ public class AppData implements DataComponent {
             else{
                 ErrorDialog error = ErrorDialog.getDialog();
                 error.show("Error","The file includes a duplicate instance: "+newinstance);
-                ((AppActions)applicationTemplate.getActionComponent()).setCorrect(false);;
+                ((AppActions)applicationTemplate.getActionComponent()).setCorrect(false);
                 loadarea.clear();
                 break;
             }
