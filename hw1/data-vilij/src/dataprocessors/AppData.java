@@ -36,6 +36,7 @@ public class AppData implements DataComponent {
     private ApplicationTemplate applicationTemplate;
     private ArrayList           list;
     private ArrayList<String>   label;
+    private DataSet             dataSet;
     public Path path = Paths.get("");
 
     public AppData(ApplicationTemplate applicationTemplate) {
@@ -43,10 +44,12 @@ public class AppData implements DataComponent {
         this.applicationTemplate = applicationTemplate;
         this.list = new ArrayList();
         this.label = new ArrayList<>();
+        this.dataSet = new DataSet();
     }
     public ArrayList<String> getLabelList(){
         return label;
     }
+    public DataSet getDataSet(){ return dataSet;}
     @Override
     public void loadData(Path dataFilePath) {
         FileChooser fileChooser = new FileChooser();
@@ -119,8 +122,7 @@ public class AppData implements DataComponent {
                     ((AppUI) applicationTemplate.getUIComponent()).getClassification().setDisable(true);
                 }
                 try{
-                    DataSet dataSet = DataSet.fromTSDFile(dataFilePath);
-                    ((AppUI) applicationTemplate.getUIComponent()).setDataSet(dataSet);
+                    dataSet = DataSet.fromTSDFile(file.toPath());
                 }catch (Exception e){
 
                 }
@@ -183,7 +185,6 @@ public class AppData implements DataComponent {
 
                 }
             }
-            ((AppUI) applicationTemplate.getUIComponent()).setDataSet(dataSet);
             loadarea.appendText(data.length + " instances with " + numlabel + " labels.\nThe labels are:\n");
             for (String label : label) {
                 loadarea.appendText("-" + label + "\n");

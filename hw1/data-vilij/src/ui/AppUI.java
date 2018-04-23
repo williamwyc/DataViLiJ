@@ -1,8 +1,10 @@
 package ui;
 
 import actions.AppActions;
+import classification.RandomClassifier;
 import dataprocessors.AppData;
 import dataprocessors.DataSet;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
@@ -41,6 +43,8 @@ public final class AppUI extends UITemplate {
     private Button                       scrnshotButton ; // toolbar button to take a screenshot of the data
     private LineChart<Number, Number> chart ;          // the chart where data will be displayed
     private Button                       displayButton ;  // workspace button to display data on the chart
+    private Button                       pauseButton;
+    private Button                       resumeButton;
     private TextArea                     textArea;       // text area for new data input
     private boolean                      hasNewText;     // whether or not the text area has any new data since last display
     private TextArea                     loadArea;
@@ -71,6 +75,12 @@ public final class AppUI extends UITemplate {
     private CheckBox continuousBox = new CheckBox();
     private CheckBox continuousBox2 = new CheckBox();
 
+    private int iteration;
+    public void setIteration(int i){this.iteration = i;}
+    private int interval;
+    public void setInterval(int i){this.interval = i;}
+    private boolean continuous;
+    public void setContinuous(boolean b){ continuous = b;}
 
     protected  String scrnshotPath = new String("");
     public LineChart<Number, Number> getChart() { return chart; }
@@ -78,16 +88,13 @@ public final class AppUI extends UITemplate {
     public TextArea getLoadArea(){return loadArea;}
     public Button getSaveButton(){return saveButton;}
     public Button getScrnshotButton(){return scrnshotButton;}
+    public Button getRunButton(){return displayButton;}
     public ToggleGroup getEditDone(){return editDone;}
     public ToggleButton getClassification(){return classification;}
     public void toggleGroupVisible(){
         toggleLabel.setVisible(true);
         clustering.setVisible(true);
         classification.setVisible(true);
-    }
-    public DataSet getDataSet(){return dataSet;}
-    public void setDataSet(DataSet dataSet){
-        this.dataSet = dataSet;
     }
     public AppUI(Stage primaryStage, ApplicationTemplate applicationTemplate) {
         super(primaryStage, applicationTemplate);
@@ -105,12 +112,16 @@ public final class AppUI extends UITemplate {
         textArea.setVisible(false);
         textArea.setStyle("text-area-background: white;");
         displayButton = new Button("RUN");
+        pauseButton = new Button("Pause");
+        resumeButton = new Button("Resume");
         displayButton.setDisable(true);
         NumberAxis xAxis = new NumberAxis();
         NumberAxis yAxis = new NumberAxis();
         chart = new LineChart<>(xAxis,yAxis);
         chart.setHorizontalGridLinesVisible(false);
         chart.setVerticalGridLinesVisible(false);
+        chart.setHorizontalZeroLineVisible(false);
+        chart.setVerticalZeroLineVisible(false);
         chart.setTitle("Data Visualization");
         chart.setMaxSize(1000,1000);
         chart.setVisible(false);
@@ -257,9 +268,12 @@ public final class AppUI extends UITemplate {
         right.getChildren().add(getChart());
     }
 
-    private void setWorkspaceActions() {
+    private synchronized void setWorkspaceActions() {
         displayButton.setOnAction((event) -> {
-
+            dataSet = ((AppData)applicationTemplate.getDataComponent()).getDataSet();
+            RandomClassifier classifier = new RandomClassifier(dataSet,iteration,interval,continuous,applicationTemplate);
+            Thread t = new Thread(classifier);
+                t.start();
         });
 
     }
@@ -282,25 +296,30 @@ public final class AppUI extends UITemplate {
         vbox.setSpacing(20);
         pane.getChildren().add(vbox);
         stage.setOnCloseRequest(e->{
+            setContinuous(continuousBox.isSelected());
             if(iterationText.getText()!=null){
                 try{
                     int i = Integer.parseInt(iterationText.getText());
+                    setIteration(i);
                     if(i<=0){
                         throw new Exception();
                     }
                 }
                 catch(Exception es){
                     iterationText.setText("1");
+                    setIteration(1);
                     ErrorDialog errorDialog = ErrorDialog.getDialog();
                     errorDialog.show("Invalid Input","The iteration value is invalid. The value is automatically changed to 1");
                 }
                 try{
                     int i = Integer.parseInt(intervalText.getText());
+                    setInterval(i);
                     if(i<=0){
                         throw new Exception();
                     }
                 } catch (Exception e1) {
                     intervalText.setText("1");
+                    setInterval(1);
                     ErrorDialog errorDialog = ErrorDialog.getDialog();
                     errorDialog.show("Invalid Input","The interval value is invalid. The value is automatically changed to 1");
                 }
@@ -361,25 +380,30 @@ public final class AppUI extends UITemplate {
         Label information = new Label("The number of cluster:"+num);
         vbox.getChildren().add(information);
         stage.setOnCloseRequest(e->{
+            setContinuous(continuousBox.isSelected());
             if(iterationText.getText()!=null){
                 try{
                     int i = Integer.parseInt(iterationText.getText());
+                    setIteration(i);
                     if(i<=0){
                         throw new Exception();
                     }
                 }
                 catch(Exception es){
                     iterationText.setText("1");
+                    setIteration(1);
                     ErrorDialog errorDialog = ErrorDialog.getDialog();
                     errorDialog.show("Invalid Input","The iteration value is invalid. The value is automatically changed to 1");
                 }
                 try{
                     int i = Integer.parseInt(intervalText.getText());
+                    setInterval(i);
                     if(i<=0){
                         throw new Exception();
                     }
                 } catch (Exception e1) {
                     intervalText.setText("1");
+                    setInterval(1);
                     ErrorDialog errorDialog = ErrorDialog.getDialog();
                     errorDialog.show("Invalid Input","The interval value is invalid. The value is automatically changed to 1");
                 }

@@ -1,13 +1,13 @@
 package dataprocessors;
 
 import javafx.geometry.Point2D;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.Tooltip;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class DataSet {
     public static class InvalidDataNameException extends Exception {
@@ -32,7 +32,8 @@ public class DataSet {
 
     private Map<String, String>  labels;
     private Map<String, Point2D> locations;
-
+    private double max=0;
+    private double min=100;
     /** Creates an empty dataset. */
     public DataSet() {
         labels = new HashMap<>();
@@ -42,6 +43,29 @@ public class DataSet {
     public Map<String, String> getLabels()     { return labels; }
 
     public Map<String, Point2D> getLocations() { return locations; }
+
+    public double getMax(){ return max;}
+    public double getMin(){ return min;}
+    public void toChartData(XYChart<Number, Number> chart){
+        Set<String> label = new HashSet<>(labels.values());
+        for (String pointlabel : label) {
+            XYChart.Series<Number, Number> series = new XYChart.Series<>();
+            series.setName(pointlabel);
+            labels.entrySet().stream().filter(entry -> entry.getValue().equals(pointlabel)).forEach(entry -> {
+                Point2D point = locations.get(entry.getKey());
+                series.getData().add(new XYChart.Data<>(point.getX(), point.getY()));
+            });
+            chart.getData().add(series);
+            for (XYChart.Data<Number, Number> data : series.getData()) {
+                if (data.getXValue().doubleValue() > max) {
+                    max = data.getXValue().doubleValue();
+                }
+                if (data.getXValue().doubleValue() < min) {
+                    min = data.getXValue().doubleValue();
+                }
+            }
+        }
+    }
 
     public void updateLabel(String instanceName, String newlabel) {
         if (labels.get(instanceName) == null)
