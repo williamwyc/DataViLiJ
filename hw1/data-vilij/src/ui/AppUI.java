@@ -43,8 +43,7 @@ public final class AppUI extends UITemplate {
     private Button                       scrnshotButton ; // toolbar button to take a screenshot of the data
     private LineChart<Number, Number> chart ;          // the chart where data will be displayed
     private Button                       displayButton ;  // workspace button to display data on the chart
-    private Button                       pauseButton;
-    private Button                       resumeButton;
+    private Button                       nextButton;
     private TextArea                     textArea;       // text area for new data input
     private boolean                      hasNewText;     // whether or not the text area has any new data since last display
     private TextArea                     loadArea;
@@ -89,6 +88,7 @@ public final class AppUI extends UITemplate {
     public Button getSaveButton(){return saveButton;}
     public Button getScrnshotButton(){return scrnshotButton;}
     public Button getRunButton(){return displayButton;}
+    public Button getNextButton(){return nextButton;}
     public ToggleGroup getEditDone(){return editDone;}
     public ToggleButton getClassification(){return classification;}
     public void toggleGroupVisible(){
@@ -112,8 +112,8 @@ public final class AppUI extends UITemplate {
         textArea.setVisible(false);
         textArea.setStyle("text-area-background: white;");
         displayButton = new Button("RUN");
-        pauseButton = new Button("Pause");
-        resumeButton = new Button("Resume");
+        nextButton = new Button("Next Iteration");
+        nextButton.setDisable(true);
         displayButton.setDisable(true);
         NumberAxis xAxis = new NumberAxis();
         NumberAxis yAxis = new NumberAxis();
@@ -174,7 +174,7 @@ public final class AppUI extends UITemplate {
         });
         classificationSet.selectedToggleProperty().addListener((ov, toggle, new_toggle) -> {
             if(new_toggle!=null){
-                left.getChildren().add(displayButton);
+                left.getChildren().addAll(displayButton,nextButton);
             }
         });
         newButton.setDisable(false);
@@ -273,7 +273,7 @@ public final class AppUI extends UITemplate {
             dataSet = ((AppData)applicationTemplate.getDataComponent()).getDataSet();
             RandomClassifier classifier = new RandomClassifier(dataSet,iteration,interval,continuous,applicationTemplate);
             Thread t = new Thread(classifier);
-                t.start();
+            t.start();
         });
 
     }

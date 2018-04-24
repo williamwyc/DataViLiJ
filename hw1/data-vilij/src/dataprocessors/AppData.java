@@ -145,6 +145,8 @@ public class AppData implements DataComponent {
         int numlabel = 0;
         loadarea.clear();
         label.clear();
+        dataSet.getLabels().clear();
+        dataSet.getLabels().clear();
         ((AppActions)applicationTemplate.getActionComponent()).setCorrect(true);
         for(int i = 1;i<=data.length;i++){
             try{
@@ -177,10 +179,9 @@ public class AppData implements DataComponent {
         if(((AppActions)applicationTemplate.getActionComponent()).getCorrect()) {
             textarea.setVisible(true);
             loadarea.setVisible(true);
-            DataSet dataSet = new DataSet();
-            for(int i = 1;i<=data.length;i++){
+            for(int i = 0;i<data.length;i++){
                 try {
-                    dataSet.addInstance(data[i-1]);
+                    dataSet.addInstance(data[i]);
                 } catch (Exception e){
 
                 }
@@ -200,7 +201,6 @@ public class AppData implements DataComponent {
                 ((AppUI) applicationTemplate.getUIComponent()).getClassification().setDisable(true);
             }
         }
-        // for homework 1
     }
     @Override
     public void saveData(Path dataFilePath) {

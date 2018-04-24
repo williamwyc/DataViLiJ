@@ -5,6 +5,7 @@ import dataprocessors.DataSet;
 import javafx.application.Platform;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import ui.AppUI;
 import vilij.templates.ApplicationTemplate;
 
@@ -25,7 +26,7 @@ public class RandomClassifier extends Classifier{
     private final int updateInterval;
 
     private ApplicationTemplate applicationTemplate;
-    // currently, this value does not change after instantiation
+
     private final AtomicBoolean tocontinue;
     @Override
     public int getMaxIterations() {
@@ -44,6 +45,7 @@ public class RandomClassifier extends Classifier{
 
     private double y1;
     private double y2;
+    private int nextCounter;
     private XYChart.Series<Number, Number> line= new XYChart.Series<>();
     public RandomClassifier(DataSet dataset,
                             int maxIterations,
@@ -56,9 +58,6 @@ public class RandomClassifier extends Classifier{
         this.tocontinue = new AtomicBoolean(tocontinue);
         this.applicationTemplate = applicationTemplate;
     }
-    public double getY1(){return y1;}
-    public double getY2(){return y2;}
-
     public void addLine(){
         LineChart<Number, Number> chart = ((AppUI)applicationTemplate.getUIComponent()).getChart();
         ((AppUI)applicationTemplate.getUIComponent()).getRunButton().setDisable(true);
@@ -88,37 +87,33 @@ public class RandomClassifier extends Classifier{
         try{
             ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(true);
             Platform.runLater(this::addLine);
-            for (int i = 1; i <= maxIterations && tocontinue(); i++) {
+            Button nextButton = ((AppUI)applicationTemplate.getUIComponent()).getNextButton();
+            nextCounter = 1;
+            nextButton.setOnAction(e->{
+                ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(true);
+                nextCounter+=updateInterval;
                 Platform.runLater(this::calculate);
-                Thread.sleep(updateInterval*1000);
+                ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
+                if(nextCounter>maxIterations){
+                    nextButton.setDisable(true);
+                }
+            });
+            if(!tocontinue.get()){
+                nextButton.setDisable(false);
+                nextCounter+=updateInterval;
+                Platform.runLater(this::calculate);
+                ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
+            }
+            for (int i = 1; i <= maxIterations&&tocontinue.get(); i++) {
+                if (i % updateInterval == 0) {
+                    Platform.runLater(this::calculate);
+                    Thread.sleep(1000);
+                }
             }
             ((AppUI)applicationTemplate.getUIComponent()).getRunButton().setDisable(false);
             ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
-            // everything below is just for internal viewing of how the output is changing
-            // in the final project, such changes will be dynamically visible in the UI
-            /*if (i % updateInterval == 0) {
-                System.out.printf("Iteration number %d: ", i); //
-                flush();
-            }
-            if (i > maxIterations * .6 && RAND.nextDouble() < 0.05) {
-                System.out.printf("Iteration number %d: ", i);
-                flush();
-                break;
-            }*/
         }catch(InterruptedException i){
 
         }
-    }
-
-    // for internal viewing only
-    protected void flush() {
-        System.out.printf("%d\t%d\t%d%n", output.get(0), output.get(1), output.get(2));
-    }
-
-    /** A placeholder main method to just make sure this code runs smoothly */
-    public static void main(String... args) throws IOException {
-        DataSet          dataset    = DataSet.fromTSDFile(Paths.get("C:\\Users\\WilliamWYC\\Desktop\\Course\\CSE219\\yichuwu\\cse219homework\\hw1\\data-vilij\\resources\\data\\sample-data.tsd"));
-       // RandomClassifier classifier = new RandomClassifier(dataset, 100, 5, true);
-       // classifier.run(); // no multithreading yet
     }
 }
