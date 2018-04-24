@@ -45,7 +45,7 @@ public final class AppUI extends UITemplate {
     private Button                       displayButton ;  // workspace button to display data on the chart
     private Button                       nextButton;
     private TextArea                     textArea;       // text area for new data input
-    private boolean                      hasNewText;     // whether or not the text area has any new data since last display
+    private boolean                     isRunning;
     private TextArea                     loadArea;
     private Label                       plotLabel;
     private Label                       toggleLabel;
@@ -91,6 +91,10 @@ public final class AppUI extends UITemplate {
     public Button getNextButton(){return nextButton;}
     public ToggleGroup getEditDone(){return editDone;}
     public ToggleButton getClassification(){return classification;}
+    public boolean getRunning(){return isRunning;}
+    public void setRunning(boolean r){
+        this.isRunning = r;
+    }
     public void toggleGroupVisible(){
         toggleLabel.setVisible(true);
         clustering.setVisible(true);
@@ -270,6 +274,7 @@ public final class AppUI extends UITemplate {
 
     private synchronized void setWorkspaceActions() {
         displayButton.setOnAction((event) -> {
+            isRunning = true;
             dataSet = ((AppData)applicationTemplate.getDataComponent()).getDataSet();
             RandomClassifier classifier = new RandomClassifier(dataSet,iteration,interval,continuous,applicationTemplate);
             Thread t = new Thread(classifier);

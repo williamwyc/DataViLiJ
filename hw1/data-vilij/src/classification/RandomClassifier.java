@@ -61,6 +61,7 @@ public class RandomClassifier extends Classifier{
     public void addLine(){
         LineChart<Number, Number> chart = ((AppUI)applicationTemplate.getUIComponent()).getChart();
         ((AppUI)applicationTemplate.getUIComponent()).getRunButton().setDisable(true);
+        ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(true);
         chart.setVisible(true);
         chart.getData().clear();
         dataset.toChartData(chart);
@@ -82,22 +83,22 @@ public class RandomClassifier extends Classifier{
         line.getData().get(0).setYValue(y1);
         line.getData().get(1).setYValue(y2);
     }
+    public void nextButtonAction(){
+        Button nextButton = ((AppUI)applicationTemplate.getUIComponent()).getNextButton();
+        nextCounter+=updateInterval;
+        Platform.runLater(this::calculate);
+        ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
+        if(nextCounter>maxIterations){
+            nextButton.setDisable(true);
+        }
+    }
     @Override
     public void run() {
         try{
-            ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(true);
             Platform.runLater(this::addLine);
             Button nextButton = ((AppUI)applicationTemplate.getUIComponent()).getNextButton();
             nextCounter = 1;
-            nextButton.setOnAction(e->{
-                ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(true);
-                nextCounter+=updateInterval;
-                Platform.runLater(this::calculate);
-                ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
-                if(nextCounter>maxIterations){
-                    nextButton.setDisable(true);
-                }
-            });
+            nextButton.setOnAction(e->nextButtonAction());
             if(!tocontinue.get()){
                 nextButton.setDisable(false);
                 nextCounter+=updateInterval;
@@ -112,6 +113,7 @@ public class RandomClassifier extends Classifier{
             }
             ((AppUI)applicationTemplate.getUIComponent()).getRunButton().setDisable(false);
             ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
+            ((AppUI)applicationTemplate.getUIComponent()).setRunning(false);
         }catch(InterruptedException i){
 
         }

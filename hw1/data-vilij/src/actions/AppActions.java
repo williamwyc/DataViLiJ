@@ -112,13 +112,46 @@ public final class AppActions implements ActionComponent {
     public void handleLoadRequest() {
         ((AppUI)applicationTemplate.getUIComponent()).getTextArea().setDisable(true);
         applicationTemplate.getDataComponent().loadData(dataFilePath);
-        // TODO: NOT A PART OF HW 1
     }
 
     @Override
     public void handleExitRequest() {
-        exit(0);
-        //for homework 1
+        Button saveButton = ((AppUI)applicationTemplate.getUIComponent()).getSaveButton();
+        if(!saveButton.isDisabled()){
+            confirm.show("Unsaved Data","Are you sure you want to exit without saving unsaved data?");
+            ConfirmationDialog.Option option = confirm.getSelectedOption();
+            if(option!=null) {
+                if (option.equals(ConfirmationDialog.Option.YES)) {
+                    try {
+                        promptToSave();
+                    } catch (IOException e) {
+
+                    }
+
+                } else if (option.equals(ConfirmationDialog.Option.NO)) {
+                    exit(0);
+                } else {
+                    confirm.close();
+                }
+            }
+        }
+
+        else if(((AppUI)applicationTemplate.getUIComponent()).getRunning()){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("An Algorithm is Running");
+            alert.setHeaderText("An Algorithm is Running");
+            alert.setContentText("Are you sure you want to exit when an algorithm is running?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                exit(0);
+            } else {
+                alert.close();
+            }
+        }
+        else{
+            exit(0);
+        }
+
     }
 
     @Override
@@ -135,21 +168,8 @@ public final class AppActions implements ActionComponent {
         fileChooser.getExtensionFilters().add(filter);
         File file = fileChooser.showSaveDialog(applicationTemplate.getUIComponent().getPrimaryWindow());
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
-        // TODO: NOT A PART OF HW 1
     }
 
-    /**
-     * This helper method verifies that the user really wants to save their unsaved work, which they might not want to
-     * do. The user will be presented with three options:
-     * <ol>
-     * <li><code>yes</code>, indicating that the user wants to save the work and continue with the action,</li>
-     * <li><code>no</code>, indicating that the user wants to continue with the action without saving the work, and</li>
-     * <li><code>cancel</code>, to indicate that the user does not want to continue with the action, but also does not
-     * want to save the work at this point.</li>
-     * </ol>
-     *
-     * @return <code>false</code> if the user presses the <i>cancel</i>, and <code>true</code> otherwise.
-     */
     private boolean promptToSave() throws IOException {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(applicationTemplate.manager.getPropertyValue(DATA_FILE_EXT_DESC.name()),applicationTemplate.manager.getPropertyValue(DATA_FILE_EXT.name()));
@@ -160,8 +180,6 @@ public final class AppActions implements ActionComponent {
         fileWriter.close();
         dataFilePath = file.toPath();
         ((AppUI)applicationTemplate.getUIComponent()).getSaveButton().setDisable(true);
-        // for homework 1
-        // remove the placeholder line below after you have implemented this method
         return false;
     }
 }
