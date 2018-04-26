@@ -4,9 +4,6 @@ import actions.AppActions;
 import classification.RandomClassifier;
 import dataprocessors.AppData;
 import dataprocessors.DataSet;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -213,7 +210,6 @@ public final class AppUI extends UITemplate {
         scrnshotButton = new Button();
         scrnshotButton = setToolbarButton(scrnshotPath,manager.getPropertyValue(SCREENSHOT_TOOLTIP.name()),true);
         toolBar = new ToolBar(newButton ,loadButton ,saveButton , scrnshotButton, exitButton);
-        // for homework 1
 
     }
 

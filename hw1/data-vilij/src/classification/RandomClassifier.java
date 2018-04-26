@@ -9,9 +9,6 @@ import javafx.scene.control.Button;
 import ui.AppUI;
 import vilij.templates.ApplicationTemplate;
 
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -43,8 +40,6 @@ public class RandomClassifier extends Classifier{
         return tocontinue.get();
     }
 
-    private double y1;
-    private double y2;
     private int nextCounter;
     private XYChart.Series<Number, Number> line= new XYChart.Series<>();
     public RandomClassifier(DataSet dataset,
@@ -58,7 +53,7 @@ public class RandomClassifier extends Classifier{
         this.tocontinue = new AtomicBoolean(tocontinue);
         this.applicationTemplate = applicationTemplate;
     }
-    public void addLine(){
+    private void addLine(){
         LineChart<Number, Number> chart = ((AppUI)applicationTemplate.getUIComponent()).getChart();
         ((AppUI)applicationTemplate.getUIComponent()).getRunButton().setDisable(true);
         ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(true);
@@ -74,16 +69,16 @@ public class RandomClassifier extends Classifier{
         line.getData().get(1).getNode().lookup(".chart-line-symbol").setStyle("-fx-background-color: transparent, transparent");
         line.getNode().lookup(".chart-series-line").setStyle("-fx-stroke: red");
     }
-    public void calculate(){
+    private void calculate(){
         int xCoefficient = new Double(RAND.nextDouble() * 100).intValue();
         int yCoefficient = new Double(RAND.nextDouble() * 100).intValue();
         int constant = new Double(RAND.nextDouble() * 1000).intValue();
-        y1 = (constant - xCoefficient * dataset.getMin()) / yCoefficient;
-        y2 = (constant - xCoefficient * dataset.getMax()) / yCoefficient;
+        double y1 = (constant - xCoefficient * dataset.getMin()) / yCoefficient;
+        double y2 = (constant - xCoefficient * dataset.getMax()) / yCoefficient;
         line.getData().get(0).setYValue(y1);
         line.getData().get(1).setYValue(y2);
     }
-    public void nextButtonAction(){
+    private void nextButtonAction(){
         Button nextButton = ((AppUI)applicationTemplate.getUIComponent()).getNextButton();
         nextCounter+=updateInterval;
         Platform.runLater(this::calculate);
@@ -115,7 +110,7 @@ public class RandomClassifier extends Classifier{
             ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
             ((AppUI)applicationTemplate.getUIComponent()).setRunning(false);
         }catch(InterruptedException i){
-
+            i.printStackTrace();
         }
     }
 }
