@@ -16,7 +16,6 @@ public class RandomClassifier extends Classifier{
     private static final Random RAND = new Random();
 
     @SuppressWarnings("FieldCanBeLocal")
-    // this mock classifier doesn't actually use the data, but a real classifier will
     private DataSet dataset;
 
     private final int maxIterations;
@@ -46,6 +45,7 @@ public class RandomClassifier extends Classifier{
                             int maxIterations,
                             int updateInterval,
                             boolean tocontinue,
+                            int numbercluster,
                             ApplicationTemplate applicationTemplate) {
         this.dataset = dataset;
         this.maxIterations = maxIterations;
@@ -85,6 +85,9 @@ public class RandomClassifier extends Classifier{
         ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
         if(nextCounter>maxIterations){
             nextButton.setDisable(true);
+            ((AppUI)applicationTemplate.getUIComponent()).getRunButton().setDisable(false);
+            ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
+            ((AppUI)applicationTemplate.getUIComponent()).setRunning(false);
         }
     }
     @Override
@@ -100,15 +103,17 @@ public class RandomClassifier extends Classifier{
                 Platform.runLater(this::calculate);
                 ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
             }
-            for (int i = 1; i <= maxIterations&&tocontinue.get(); i++) {
-                if (i % updateInterval == 0) {
-                    Platform.runLater(this::calculate);
-                    Thread.sleep(1000);
+            else {
+                for (int i = 1; i <= maxIterations&&tocontinue.get(); i++) {
+                    if (i % updateInterval == 0) {
+                        Platform.runLater(this::calculate);
+                        Thread.sleep(1000);
+                    }
                 }
+                ((AppUI)applicationTemplate.getUIComponent()).getRunButton().setDisable(false);
+                ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
+                ((AppUI)applicationTemplate.getUIComponent()).setRunning(false);
             }
-            ((AppUI)applicationTemplate.getUIComponent()).getRunButton().setDisable(false);
-            ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
-            ((AppUI)applicationTemplate.getUIComponent()).setRunning(false);
         }catch(InterruptedException i){
             i.printStackTrace();
         }

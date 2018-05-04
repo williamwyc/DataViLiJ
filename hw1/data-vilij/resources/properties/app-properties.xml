@@ -32,6 +32,11 @@ functionality within the main workspace. -->
         <property name="TEXT_AREA" value="text area"/>
         <property name="SPECIFIED_FILE" value=" specified file"/>
 
+        <!-- ALGORITHM NAME -->
+        <property name="RANDOM_CLASSIFICATION" value="classification.RandomClassifier"/>
+        <property name="RANDOM_CLUSTERING" value="clustering.RandomClusterer"/>
+        <property name="KMEANS_CLUSTERING" value="clustering.KMeansClusterer"/>
+
     </property_list>
     <property_options_list/>
 </properties>

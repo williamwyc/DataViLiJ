@@ -2,8 +2,11 @@ package ui;
 
 import actions.AppActions;
 import classification.RandomClassifier;
+import clustering.KMeansClusterer;
+import clustering.RandomClusterer;
 import dataprocessors.AppData;
 import dataprocessors.DataSet;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,10 +22,11 @@ import vilij.templates.ApplicationTemplate;
 import vilij.templates.UITemplate;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-import static settings.AppPropertyTypes.SCREENSHOT_ICON;
-import static settings.AppPropertyTypes.SCREENSHOT_TOOLTIP;
+import static settings.AppPropertyTypes.*;
 import static vilij.settings.PropertyTypes.GUI_RESOURCE_PATH;
 import static vilij.settings.PropertyTypes.ICONS_RESOURCE_PATH;
 
@@ -54,22 +58,28 @@ public final class AppUI extends UITemplate {
     private ToggleButton                done;
     private VBox                        left;
     private RadioButton                 randomClustering;
+    private RadioButton                 kMeansCLustering;
     private RadioButton                 randomClassification;
-    private ToggleGroup                 clusteringSet;
-    private ToggleGroup                 classificationSet;
+    private ToggleGroup                 algorithmSet;
     private AppData appData;
     private AppActions appActions;
     private DataSet dataSet;
-
+    private String algorithm;
     private Label iterationLabel = new Label("Max.Iterations:");
     private TextField iterationText = new TextField();
     private TextField iterationText2 = new TextField();
+    private TextField iterationText3 = new TextField();
     private Label intervalLabel = new Label("Update Interval:");
     private TextField intervalText = new TextField();
     private TextField intervalText2 = new TextField();
+    private TextField intervalText3 = new TextField();
     private Label continuousLabel = new Label("Continuous Run?");
     private CheckBox continuousBox = new CheckBox();
     private CheckBox continuousBox2 = new CheckBox();
+    private CheckBox continuousBox3 = new CheckBox();
+    private Label clusteringLabel = new Label("Number of Clustering");
+    private TextField numberClustering = new TextField();
+    private TextField numberClusteringK = new TextField();
 
     private int iteration;
     public void setIteration(int i){this.iteration = i;}
@@ -77,7 +87,10 @@ public final class AppUI extends UITemplate {
     public void setInterval(int i){this.interval = i;}
     private boolean continuous;
     public void setContinuous(boolean b){ continuous = b;}
+    private int numberCluster;
+    public void setNumberClustering(int c){numberCluster = c;}
 
+    private Object o = new Object();
     protected  String scrnshotPath = new String("");
     public LineChart<Number, Number> getChart() { return chart; }
     public TextArea getTextArea(){return textArea;}
@@ -137,17 +150,23 @@ public final class AppUI extends UITemplate {
         clustering.setToggleGroup(group);
         classification.setToggleGroup(group);
         randomClustering = new RadioButton("Random Clustering");
-        clusteringSet = new ToggleGroup();
-        randomClustering.setToggleGroup(clusteringSet);
+        algorithmSet = new ToggleGroup();
+        kMeansCLustering = new RadioButton("KMeans Clustering");
+        randomClustering.setToggleGroup(algorithmSet);
+        kMeansCLustering.setToggleGroup(algorithmSet);
         randomClassification = new RadioButton("Random Classification");
-        classificationSet = new ToggleGroup();
-        randomClassification.setToggleGroup(classificationSet);
+        randomClassification.setToggleGroup(algorithmSet);
+
         Button settingA = new Button("Setting");
         Button settingB = new Button("Setting");
-        settingA.setOnAction(e->showClusteringSettingWindow(iterationText,intervalText,continuousBox));
+        Button settingK = new Button("Setting");
+        settingA.setOnAction(e->showClusteringSettingWindow(iterationText,intervalText,continuousBox,numberClustering));
         settingB.setOnAction(e->showSettingWindow(iterationText2,intervalText2,continuousBox2));
+        settingK.setOnAction(e->showClusteringSettingWindow(iterationText3,intervalText3,continuousBox3,numberClusteringK));
         HBox radioClustering = new HBox(randomClustering,settingA);
         HBox radioClassification = new HBox(randomClassification,settingB);
+        HBox kMeansClustering = new HBox(kMeansCLustering,settingK);
+        PropertyManager manager = PropertyManager.getManager();
         group.selectedToggleProperty().addListener((ov, toggle, new_toggle) -> {
             if(new_toggle!=null){
                 if(new_toggle == clustering){
@@ -156,26 +175,32 @@ public final class AppUI extends UITemplate {
                         left.getChildren().remove(radioClassification);
                         classification.setDisable(false);
                     }
-                    left.getChildren().add(radioClustering);
+                    left.getChildren().addAll(radioClustering,kMeansClustering);
                 }
                 else{
                     classification.setDisable(true);
                     if(left.getChildren().contains(radioClustering)){
-                        left.getChildren().remove(radioClustering);
+                        left.getChildren().removeAll(radioClustering,kMeansClustering);
                         clustering.setDisable(false);
                     }
                     left.getChildren().add(radioClassification);
                 }
             }
         });
-        clusteringSet.selectedToggleProperty().addListener((ov, toggle, new_toggle) -> {
+        algorithmSet.selectedToggleProperty().addListener((ov, toggle, new_toggle) -> {
             if(new_toggle!=null){
-                left.getChildren().add(displayButton);
+                if(!left.getChildren().contains(displayButton)){
+                    left.getChildren().addAll(displayButton,nextButton);
+                }
             }
-        });
-        classificationSet.selectedToggleProperty().addListener((ov, toggle, new_toggle) -> {
-            if(new_toggle!=null){
-                left.getChildren().addAll(displayButton,nextButton);
+            if(new_toggle==randomClassification){
+                algorithm = manager.getPropertyValue(RANDOM_CLASSIFICATION.name());
+            }
+            else if(new_toggle==randomClustering){
+                algorithm = manager.getPropertyValue(RANDOM_CLUSTERING.name());
+            }
+            else{
+                algorithm = manager.getPropertyValue(KMEANS_CLUSTERING.name());
             }
         });
         newButton.setDisable(false);
@@ -271,9 +296,31 @@ public final class AppUI extends UITemplate {
     private synchronized void setWorkspaceActions() {
         displayButton.setOnAction((event) -> {
             isRunning = true;
-            dataSet = ((AppData)applicationTemplate.getDataComponent()).getDataSet();
-            RandomClassifier classifier = new RandomClassifier(dataSet,iteration,interval,continuous,applicationTemplate);
-            Thread t = new Thread(classifier);
+            try {
+                Class c = Class.forName(algorithm);
+                Constructor cs = c.getDeclaredConstructor(DataSet.class,int.class,int.class,boolean.class,int.class,ApplicationTemplate.class);
+                cs.setAccessible(true);
+                dataSet = ((AppData)applicationTemplate.getDataComponent()).getDataSet();
+                o = cs.newInstance(dataSet,iteration,interval,continuous,numberCluster,applicationTemplate);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+            //RandomClassifier classifier = new RandomClassifier(dataSet,iteration,interval,continuous,applicationTemplate);
+            //Thread t = new Thread(classifier);
+            //RandomClusterer clusterer = new RandomClusterer(dataSet,iteration,interval,numberCluster,applicationTemplate);
+            //Thread t = new Thread(clusterer);
+            //KMeansClusterer kMeansClusterer = new KMeansClusterer(dataSet,iteration,interval,numberCluster,applicationTemplate);
+            //Thread t = new Thread(kMeansClusterer);
+            //t.start();
+            Thread t = new Thread((Runnable) o);
             t.start();
         });
 
@@ -358,7 +405,7 @@ public final class AppUI extends UITemplate {
         });
         stage.show();
     }
-    private void showClusteringSettingWindow(TextField iterationText, TextField intervalText, CheckBox continuousBox){
+    private void showClusteringSettingWindow(TextField iterationText, TextField intervalText, CheckBox continuousBox, TextField numberClustering){
         Stage stage = new Stage();
         Pane pane = new Pane();
         Scene scene = new Scene(pane,300,300);
@@ -371,15 +418,13 @@ public final class AppUI extends UITemplate {
         interval.getChildren().addAll(intervalLabel,intervalText);
         HBox continuous = new HBox();
         continuous.getChildren().addAll(continuousLabel,continuousBox);
-        vbox.getChildren().addAll(iteration,interval,continuous);
+        HBox number = new HBox();
+        number.getChildren().addAll(clusteringLabel,numberClustering);
+        vbox.getChildren().addAll(iteration,interval,continuous,number);
         vbox.setAlignment(Pos.CENTER);
         vbox.setPadding(new Insets(80,100,100,50));
         vbox.setSpacing(20);
         pane.getChildren().add(vbox);
-        ArrayList<String> label = ((AppData)applicationTemplate.getDataComponent()).getLabelList();
-        int num = label.size();
-        Label information = new Label("The number of cluster:"+num);
-        vbox.getChildren().add(information);
         stage.setOnCloseRequest(e->{
             setContinuous(continuousBox.isSelected());
             if(iterationText.getText()!=null){
@@ -407,6 +452,18 @@ public final class AppUI extends UITemplate {
                     setInterval(1);
                     ErrorDialog errorDialog = ErrorDialog.getDialog();
                     errorDialog.show("Invalid Input","The interval value is invalid. The value is automatically changed to 1");
+                }
+                try{
+                    int c = Integer.parseInt(numberClustering.getText());
+                    setNumberClustering(c);
+                    if(c<=0){
+                        throw new Exception();
+                    }
+                } catch (Exception e1) {
+                    numberClustering.setText("1");
+                    setInterval(1);
+                    ErrorDialog errorDialog = ErrorDialog.getDialog();
+                    errorDialog.show("Invalid Input","The cluster value is invalid. The value is automatically changed to 1");
                 }
             }
         });
