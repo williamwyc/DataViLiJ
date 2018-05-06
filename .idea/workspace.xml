@@ -2,15 +2,186 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77ae2b56-4aa9-4de2-ba5a-c076945186d1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/hw1/data-vilij/src/algorithm/Clusterer.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/hw1/data-vilij/src/clustering/KMeansClusterer.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/hw1/data-vilij/src/clustering/RandomClusterer.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/settings/AppPropertyTypes.class" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/resources/properties/app-properties.xml" afterPath="$PROJECT_DIR$/hw1/data-vilij/resources/properties/app-properties.xml" />
-      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/classification/RandomClassifier.java" afterPath="$PROJECT_DIR$/hw1/data-vilij/src/classification/RandomClassifier.java" />
-      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/settings/AppPropertyTypes.java" afterPath="$PROJECT_DIR$/hw1/data-vilij/src/settings/AppPropertyTypes.java" />
-      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java" afterPath="$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java" />
-      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/ui/AppUI.class" afterPath="$PROJECT_DIR$/hw1/out/production/cse219homework/ui/AppUI.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/.idea/dictionaries/WilliamWYC.xml" afterPath="$PROJECT_DIR$/FinalProject/.idea/dictionaries/WilliamWYC.xml" />
+      <change beforePath="$PROJECT_DIR$/hw1/.idea/misc.xml" afterPath="$PROJECT_DIR$/FinalProject/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/hw1/.idea/modules.xml" afterPath="$PROJECT_DIR$/FinalProject/.idea/modules.xml" />
+      <change beforePath="$PROJECT_DIR$/hw1/.idea/vcs.xml" afterPath="$PROJECT_DIR$/FinalProject/.idea/vcs.xml" />
+      <change beforePath="$PROJECT_DIR$/hw1/.idea/workspace.xml" afterPath="$PROJECT_DIR$/FinalProject/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/data-vilij.iml" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/data-vilij.iml" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/resources/UI.css" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/resources/UI.css" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/resources/data/sample-data.tsd" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/resources/data/sample-data.tsd" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/resources/gui/icons/screenshot.png" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/resources/gui/icons/screenshot.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/resources/properties/app-properties.xml" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/resources/properties/app-properties.xml" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/actions/AppActions.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/actions/AppActions.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/algorithm/Algorithm.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/algorithm/Algorithm.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/algorithm/Classifier.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/algorithm/Classifier.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/algorithm/Clusterer.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/algorithm/Clusterer.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/classification/RandomClassifier.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/classification/RandomClassifier.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/clustering/KMeansClusterer.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/clustering/KMeansClusterer.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/clustering/RandomClusterer.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/clustering/RandomClusterer.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/AppData.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/dataprocessors/AppData.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/DataSet.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/dataprocessors/DataSet.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/TSDProcessor.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/dataprocessors/TSDProcessor.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/settings/AppPropertyTypes.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/settings/AppPropertyTypes.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/ui/AppUI.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/data-vilij/src/ui/DataVisualizer.java" afterPath="$PROJECT_DIR$/FinalProject/data-vilij/src/ui/DataVisualizer.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/UI.css" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/UI.css" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/actions/AppActions.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/actions/AppActions.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/data/sample-data.tsd" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/data/sample-data.tsd" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/dataprocessors/AppData.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/dataprocessors/AppData.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/dataprocessors/TSDProcessor$InvalidDataNameException.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/dataprocessors/TSDProcessor$InvalidDataNameException.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/dataprocessors/TSDProcessor.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/dataprocessors/TSDProcessor.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/css/vilij.css" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/css/vilij.css" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/icons/exit.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/icons/exit.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/icons/export.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/icons/export.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/icons/file.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/icons/file.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/icons/import.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/icons/import.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/icons/load.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/icons/load.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/icons/logo.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/icons/logo.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/icons/new.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/icons/new.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/icons/open.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/icons/open.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/icons/print.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/icons/print.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/icons/save.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/icons/save.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/icons/saved.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/icons/saved.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/gui/icons/screenshot.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/gui/icons/screenshot.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/properties/app-properties.xml" afterPath="$PROJECT_DIR$/FinalProject/out/production/data-vilij/properties/app-properties.xml" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/properties/properties.xml" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/properties/properties.xml" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/properties/property-schema.xsd" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/properties/property-schema.xsd" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/settings/AppPropertyTypes.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/data-vilij/settings/AppPropertyTypes.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/ui/AppUI.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/ui/AppUI.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/ui/AppUI.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/ui/DataVisualizer.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/ui/DataVisualizer.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/ui/DataVisualizer.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/components/ActionComponent.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/components/ActionComponent.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/components/ConfirmationDialog$Option.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/components/ConfirmationDialog$Option.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/components/ConfirmationDialog.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/components/ConfirmationDialog.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/components/DataComponent.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/components/DataComponent.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/components/Dialog$DialogType.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/components/Dialog$DialogType.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/components/Dialog.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/components/Dialog.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/components/ErrorDialog.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/components/ErrorDialog.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/components/UIComponent.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/components/UIComponent.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/propertymanager/PropertyManager.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/propertymanager/PropertyManager.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/settings/InitializationParams.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/settings/InitializationParams.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/settings/PropertyTypes.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/settings/PropertyTypes.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/templates/ApplicationTemplate$1.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/templates/ApplicationTemplate$1.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/templates/ApplicationTemplate.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/templates/ApplicationTemplate.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/vilij/templates/UITemplate.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/vilij/templates/UITemplate.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/xmlutil/InvalidXMLFileFormatException.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/xmlutil/InvalidXMLFileFormatException.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/cse219homework/xmlutil/XMLUtilities.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/xmlutil/XMLUtilities.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/UI.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/UI.css" afterPath="$PROJECT_DIR$/FinalProject/out/production/data-vilij/UI.css" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/actions/AppActions.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/actions/AppActions.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/data-vilij/actions/AppActions.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/data/sample-data.tsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/data/sample-data.tsd" afterPath="$PROJECT_DIR$/FinalProject/out/production/data-vilij/data/sample-data.tsd" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/dataprocessors/AppData.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/dataprocessors/AppData.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/data-vilij/dataprocessors/AppData.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/dataprocessors/TSDProcessor$InvalidDataNameException.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/dataprocessors/TSDProcessor$InvalidDataNameException.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/data-vilij/dataprocessors/TSDProcessor$InvalidDataNameException.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/dataprocessors/TSDProcessor.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/dataprocessors/TSDProcessor.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/data-vilij/dataprocessors/TSDProcessor.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/gui/icons/screenshot.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/gui/icons/screenshot.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/data-vilij/gui/icons/screenshot.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/properties/app-properties.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/properties/app-properties.xml" afterPath="$PROJECT_DIR$/FinalProject/out/production/cse219homework/properties/app-properties.xml" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/settings/AppPropertyTypes.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/ui/AppUI$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/ui/AppUI$1.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/data-vilij/ui/AppUI$1.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/ui/AppUI.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/ui/AppUI.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/data-vilij/ui/AppUI.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/ui/DataVisualizer.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/data-vilij/ui/DataVisualizer.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/data-vilij/ui/DataVisualizer.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/css/vilij.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/css/vilij.css" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/gui/css/vilij.css" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/exit.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/exit.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/gui/icons/exit.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/export.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/export.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/gui/icons/export.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/file.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/file.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/gui/icons/file.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/import.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/import.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/gui/icons/import.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/load.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/load.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/gui/icons/load.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/logo.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/logo.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/gui/icons/logo.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/new.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/new.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/gui/icons/new.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/open.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/open.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/gui/icons/open.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/print.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/print.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/gui/icons/print.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/save.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/save.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/gui/icons/save.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/saved.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/gui/icons/saved.png" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/gui/icons/saved.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/properties/properties.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/properties/properties.xml" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/properties/properties.xml" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/properties/property-schema.xsd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/properties/property-schema.xsd" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/properties/property-schema.xsd" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/ActionComponent.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/ActionComponent.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/components/ActionComponent.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/ConfirmationDialog$Option.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/ConfirmationDialog$Option.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/components/ConfirmationDialog$Option.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/ConfirmationDialog.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/ConfirmationDialog.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/components/ConfirmationDialog.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/DataComponent.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/DataComponent.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/components/DataComponent.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/Dialog$DialogType.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/Dialog$DialogType.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/components/Dialog$DialogType.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/Dialog.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/Dialog.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/components/Dialog.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/ErrorDialog.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/ErrorDialog.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/components/ErrorDialog.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/UIComponent.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/components/UIComponent.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/components/UIComponent.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/propertymanager/PropertyManager.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/propertymanager/PropertyManager.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/propertymanager/PropertyManager.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/settings/InitializationParams.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/settings/InitializationParams.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/settings/InitializationParams.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/settings/PropertyTypes.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/settings/PropertyTypes.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/settings/PropertyTypes.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/templates/ApplicationTemplate$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/templates/ApplicationTemplate$1.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/templates/ApplicationTemplate$1.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/templates/ApplicationTemplate.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/templates/ApplicationTemplate.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/templates/ApplicationTemplate.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/templates/UITemplate.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/vilij/vilij/templates/UITemplate.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/vilij/vilij/templates/UITemplate.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/xmlutil/xmlutil/InvalidXMLFileFormatException.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/xmlutil/xmlutil/InvalidXMLFileFormatException.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/xmlutil/xmlutil/InvalidXMLFileFormatException.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/xmlutil/xmlutil/XMLUtilities.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hw1/out/production/xmlutil/xmlutil/XMLUtilities.class" afterPath="$PROJECT_DIR$/FinalProject/out/production/xmlutil/xmlutil/XMLUtilities.class" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/gui/css/vilij.css" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/gui/css/vilij.css" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/gui/icons/exit.png" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/gui/icons/exit.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/gui/icons/export.png" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/gui/icons/export.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/gui/icons/file.png" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/gui/icons/file.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/gui/icons/import.png" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/gui/icons/import.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/gui/icons/load.png" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/gui/icons/load.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/gui/icons/logo.png" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/gui/icons/logo.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/gui/icons/new.png" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/gui/icons/new.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/gui/icons/open.png" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/gui/icons/open.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/gui/icons/print.png" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/gui/icons/print.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/gui/icons/save.png" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/gui/icons/save.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/gui/icons/saved.png" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/gui/icons/saved.png" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/properties/properties.xml" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/properties/properties.xml" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/resources/properties/property-schema.xsd" afterPath="$PROJECT_DIR$/FinalProject/vilij/resources/properties/property-schema.xsd" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/src/vilij/components/ActionComponent.java" afterPath="$PROJECT_DIR$/FinalProject/vilij/src/vilij/components/ActionComponent.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/src/vilij/components/ConfirmationDialog.java" afterPath="$PROJECT_DIR$/FinalProject/vilij/src/vilij/components/ConfirmationDialog.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/src/vilij/components/DataComponent.java" afterPath="$PROJECT_DIR$/FinalProject/vilij/src/vilij/components/DataComponent.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/src/vilij/components/Dialog.java" afterPath="$PROJECT_DIR$/FinalProject/vilij/src/vilij/components/Dialog.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/src/vilij/components/ErrorDialog.java" afterPath="$PROJECT_DIR$/FinalProject/vilij/src/vilij/components/ErrorDialog.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/src/vilij/components/UIComponent.java" afterPath="$PROJECT_DIR$/FinalProject/vilij/src/vilij/components/UIComponent.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/src/vilij/propertymanager/PropertyManager.java" afterPath="$PROJECT_DIR$/FinalProject/vilij/src/vilij/propertymanager/PropertyManager.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/src/vilij/settings/InitializationParams.java" afterPath="$PROJECT_DIR$/FinalProject/vilij/src/vilij/settings/InitializationParams.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/src/vilij/settings/PropertyTypes.java" afterPath="$PROJECT_DIR$/FinalProject/vilij/src/vilij/settings/PropertyTypes.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/src/vilij/templates/ApplicationTemplate.java" afterPath="$PROJECT_DIR$/FinalProject/vilij/src/vilij/templates/ApplicationTemplate.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/src/vilij/templates/UITemplate.java" afterPath="$PROJECT_DIR$/FinalProject/vilij/src/vilij/templates/UITemplate.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/vilij/vilij.iml" afterPath="$PROJECT_DIR$/FinalProject/vilij/vilij.iml" />
+      <change beforePath="$PROJECT_DIR$/hw1/xmlutil/src/xmlutil/InvalidXMLFileFormatException.java" afterPath="$PROJECT_DIR$/FinalProject/xmlutil/src/xmlutil/InvalidXMLFileFormatException.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/xmlutil/src/xmlutil/XMLUtilities.java" afterPath="$PROJECT_DIR$/FinalProject/xmlutil/src/xmlutil/XMLUtilities.java" />
+      <change beforePath="$PROJECT_DIR$/hw1/xmlutil/xmlutil.iml" afterPath="$PROJECT_DIR$/FinalProject/xmlutil/xmlutil.iml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,10 +193,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="RandomClassifier.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/classification/RandomClassifier.java">
+        <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/classification/RandomClassifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="121" column="0" lean-forward="true" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+            <state relative-caret-position="2100">
+              <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -33,11 +204,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RandomClusterer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/clustering/RandomClusterer.java">
+      <file leaf-file-name="AppUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/ui/AppUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-202">
-              <caret line="62" column="79" lean-forward="false" selection-start-line="62" selection-start-column="79" selection-end-line="62" selection-end-column="79" />
+            <state relative-caret-position="5560">
+              <caret line="308" column="48" lean-forward="false" selection-start-line="308" selection-start-column="48" selection-end-line="308" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4583#4584#0" expanded="true" />
+                <element signature="e#4617#4618#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app-properties.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/resources/properties/app-properties.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RandomClusterer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/clustering/RandomClusterer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1880">
+              <caret line="115" column="15" lean-forward="false" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1437#1438#0" expanded="true" />
@@ -51,39 +246,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KMeansClusterer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/clustering/KMeansClusterer.java">
+      <file leaf-file-name="KMeansClusterer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/clustering/KMeansClusterer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-850">
-              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="2000">
+              <caret line="100" column="47" lean-forward="false" selection-start-line="100" selection-start-column="47" selection-end-line="100" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppUI.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3611">
-              <caret line="284" column="41" lean-forward="true" selection-start-line="284" selection-start-column="41" selection-end-line="284" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1262#1298#0" expanded="true" />
-                <element signature="e#4583#4584#0" expanded="true" />
-                <element signature="e#4617#4618#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app-properties.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hw1/data-vilij/resources/properties/app-properties.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -106,6 +276,7 @@
       <find>listener</find>
       <find>left.getChildren().add</find>
       <find>max</find>
+      <find>tocontinue</find>
     </findStrings>
   </component>
   <component name="Git.Rebase.Settings">
@@ -140,11 +311,11 @@
         <option value="$PROJECT_DIR$/hw1/data-vilij/src/actions/AppActions.java" />
         <option value="$PROJECT_DIR$/hw1/data-vilij/src/algorithm/Clusterer.java" />
         <option value="$PROJECT_DIR$/hw1/data-vilij/src/settings/AppPropertyTypes.java" />
-        <option value="$PROJECT_DIR$/hw1/data-vilij/src/clustering/KMeansClusterer.java" />
         <option value="$PROJECT_DIR$/hw1/data-vilij/resources/properties/app-properties.xml" />
         <option value="$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java" />
-        <option value="$PROJECT_DIR$/hw1/data-vilij/src/clustering/RandomClusterer.java" />
         <option value="$PROJECT_DIR$/hw1/data-vilij/src/classification/RandomClassifier.java" />
+        <option value="$PROJECT_DIR$/hw1/data-vilij/src/clustering/RandomClusterer.java" />
+        <option value="$PROJECT_DIR$/hw1/data-vilij/src/clustering/KMeansClusterer.java" />
       </list>
     </option>
   </component>
@@ -175,7 +346,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -186,117 +360,31 @@
             <path>
               <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
+              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
+              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
               <item name="data-vilij" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
-              <item name="data-vilij" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
-              <item name="data-vilij" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
-              <item name="data-vilij" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="properties" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
-              <item name="data-vilij" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
-              <item name="data-vilij" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
-              <item name="data-vilij" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
-              <item name="data-vilij" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="classification" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
-              <item name="data-vilij" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="clustering" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
-              <item name="data-vilij" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dataprocessors" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
-              <item name="data-vilij" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
-              <item name="data-vilij" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
+              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
               <item name="vilij" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
+              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
               <item name="vilij" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
+              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
               <item name="vilij" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="vilij" type="462c0819:PsiDirectoryNode" />
@@ -304,7 +392,7 @@
             <path>
               <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
+              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
               <item name="vilij" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="vilij" type="462c0819:PsiDirectoryNode" />
@@ -313,7 +401,7 @@
             <path>
               <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
+              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
               <item name="vilij" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="vilij" type="462c0819:PsiDirectoryNode" />
@@ -322,7 +410,7 @@
             <path>
               <item name="cse219homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="cse219homework" type="462c0819:PsiDirectoryNode" />
-              <item name="hw1" type="462c0819:PsiDirectoryNode" />
+              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
               <item name="vilij" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="vilij" type="462c0819:PsiDirectoryNode" />
@@ -332,9 +420,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -590,7 +675,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524772690953</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Random Cluster">
+      <created>1525474373686</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1525474373686</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -604,7 +696,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.4969743" order="6" side_tool="false" content_ui="tabs" />
@@ -619,7 +710,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32822084" sideWeight="0.48789713" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19742814" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20347957" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -702,7 +793,8 @@
     <MESSAGE value="Use Case 9" />
     <MESSAGE value="Use Case 10" />
     <MESSAGE value="Hw5 Final Version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hw5 Final Version" />
+    <MESSAGE value="Random Cluster" />
+    <option name="LAST_COMMIT_MESSAGE" value="Random Cluster" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -711,174 +803,169 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/TSDProcessor.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/dataprocessors/TSDProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="20" column="15" lean-forward="true" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/resources/data/sample-data.tsd">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/resources/data/sample-data.tsd">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="26" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/AppData.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/dataprocessors/AppData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
           <caret line="63" column="111" lean-forward="false" selection-start-line="63" selection-start-column="111" selection-end-line="63" selection-end-column="111" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/ui/AppUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3840">
           <caret line="192" column="38" lean-forward="false" selection-start-line="192" selection-start-column="38" selection-end-line="192" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1262#1298#0" expanded="true" />
             <element signature="e#4583#4584#0" expanded="true" />
             <element signature="e#4617#4618#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/TSDProcessor.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/dataprocessors/TSDProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/vilij/src/vilij/templates/ApplicationTemplate.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/vilij/src/vilij/templates/ApplicationTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="44" lean-forward="false" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/DataVisualizer.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/ui/DataVisualizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="16" column="63" lean-forward="true" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/resources/data/sample-data.tsd">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/resources/data/sample-data.tsd">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/AppData.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/dataprocessors/AppData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
           <caret line="63" column="111" lean-forward="false" selection-start-line="63" selection-start-column="111" selection-end-line="63" selection-end-column="111" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/ui/AppUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3840">
           <caret line="192" column="38" lean-forward="true" selection-start-line="192" selection-start-column="38" selection-end-line="192" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1262#1298#0" expanded="true" />
             <element signature="e#4583#4584#0" expanded="true" />
             <element signature="e#4617#4618#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/vilij/src/vilij/templates/ApplicationTemplate.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/vilij/src/vilij/templates/ApplicationTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="44" lean-forward="false" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/TSDProcessor.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/dataprocessors/TSDProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/DataVisualizer.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/ui/DataVisualizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/resources/data/sample-data.tsd">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/resources/data/sample-data.tsd">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/vilij/src/vilij/templates/ApplicationTemplate.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/vilij/src/vilij/templates/ApplicationTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="44" lean-forward="false" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/DataVisualizer.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/ui/DataVisualizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/vilij/src/vilij/templates/ApplicationTemplate.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/vilij/src/vilij/templates/ApplicationTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="9" column="52" lean-forward="false" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/resources/data/sample-data.tsd">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/resources/data/sample-data.tsd">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/DataVisualizer.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/ui/DataVisualizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="23" column="5" lean-forward="false" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/vilij/src/vilij/templates/ApplicationTemplate.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/vilij/src/vilij/templates/ApplicationTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="9" column="52" lean-forward="true" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/ui/AppUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1262#1298#0" expanded="true" />
             <element signature="e#4583#4584#0" expanded="true" />
             <element signature="e#4617#4618#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/DataVisualizer.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/ui/DataVisualizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="19" column="43" lean-forward="false" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
@@ -892,21 +979,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/DataVisualizer.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/ui/DataVisualizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/vilij/src/vilij/templates/UITemplate.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/vilij/src/vilij/templates/UITemplate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-794">
           <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/vilij/src/vilij/templates/ApplicationTemplate.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/vilij/src/vilij/templates/ApplicationTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1154">
           <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="32" />
@@ -914,7 +1001,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/RunConfigurationUI.java" />
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/resources/data/sample-data.tsd">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/resources/data/sample-data.tsd">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
@@ -935,7 +1022,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/resources/UI.css">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/resources/UI.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
@@ -949,50 +1036,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/algorithm/Classifier.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/algorithm/Classifier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="5" column="37" lean-forward="true" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/algorithm/Algorithm.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/algorithm/Algorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/TSDProcessor.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/dataprocessors/TSDProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="114" column="125" lean-forward="false" selection-start-line="114" selection-start-column="125" selection-end-line="114" selection-end-column="125" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/vilij/src/vilij/components/ErrorDialog.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/vilij/src/vilij/components/ErrorDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-556">
           <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/vilij/src/vilij/components/ConfirmationDialog.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/vilij/src/vilij/components/ConfirmationDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-586">
           <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/AppData.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/dataprocessors/AppData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="163" column="24" lean-forward="false" selection-start-line="163" selection-start-column="24" selection-end-line="163" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/algorithm/Clusterer.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/algorithm/Clusterer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
@@ -1000,30 +1086,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/vilij/src/vilij/settings/PropertyTypes.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/vilij/src/vilij/settings/PropertyTypes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-391">
           <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/data-vilij.iml">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/data-vilij.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/vilij/src/vilij/settings/InitializationParams.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/vilij/src/vilij/settings/InitializationParams.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-47">
           <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/vilij/src/vilij/propertymanager/PropertyManager.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/vilij/src/vilij/propertymanager/PropertyManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
@@ -1031,52 +1115,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/dataprocessors/DataSet.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/dataprocessors/DataSet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="48" column="59" lean-forward="false" selection-start-line="48" selection-start-column="59" selection-end-line="48" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/actions/AppActions.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/actions/AppActions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="45" column="21" lean-forward="true" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/settings/AppPropertyTypes.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/settings/AppPropertyTypes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/resources/properties/app-properties.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/resources/properties/app-properties.xml">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/classification/RandomClassifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/classification/RandomClassifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="121" column="0" lean-forward="true" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+        <state relative-caret-position="2100">
+          <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/clustering/RandomClusterer.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/ui/AppUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-202">
-          <caret line="62" column="79" lean-forward="false" selection-start-line="62" selection-start-column="79" selection-end-line="62" selection-end-column="79" />
+        <state relative-caret-position="5560">
+          <caret line="308" column="48" lean-forward="false" selection-start-line="308" selection-start-column="48" selection-end-line="308" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4583#4584#0" expanded="true" />
+            <element signature="e#4617#4618#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/clustering/RandomClusterer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1880">
+          <caret line="115" column="15" lean-forward="false" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1437#1438#0" expanded="true" />
@@ -1089,25 +1182,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/clustering/KMeansClusterer.java">
+    <entry file="file://$PROJECT_DIR$/FinalProject/data-vilij/src/clustering/KMeansClusterer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-850">
-          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state relative-caret-position="2000">
+          <caret line="100" column="47" lean-forward="false" selection-start-line="100" selection-start-column="47" selection-end-line="100" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hw1/data-vilij/src/ui/AppUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3611">
-          <caret line="284" column="41" lean-forward="true" selection-start-line="284" selection-start-column="41" selection-end-line="284" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1262#1298#0" expanded="true" />
-            <element signature="e#4583#4584#0" expanded="true" />
-            <element signature="e#4617#4618#0" expanded="true" />
           </folding>
         </state>
       </provider>

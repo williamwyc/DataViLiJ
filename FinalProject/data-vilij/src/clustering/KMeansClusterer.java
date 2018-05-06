@@ -5,6 +5,7 @@ import dataprocessors.DataSet;
 import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.chart.LineChart;
+import javafx.scene.control.Button;
 import ui.AppUI;
 import vilij.templates.ApplicationTemplate;
 
@@ -29,7 +30,7 @@ public class KMeansClusterer extends Clusterer {
     private final int           updateInterval;
     private final AtomicBoolean tocontinue;
     private ApplicationTemplate applicationTemplate;
-
+    private int nextCounter;
 
     public KMeansClusterer(DataSet dataset,
                            int maxIterations,
@@ -54,6 +55,22 @@ public class KMeansClusterer extends Clusterer {
     @Override
     public boolean tocontinue() { return tocontinue.get(); }
 
+    private void nextButtonAction(){
+        Button nextButton = ((AppUI)applicationTemplate.getUIComponent()).getNextButton();
+        nextCounter+=1;
+        assignLabels();
+        recomputeCentroids();
+        LineChart<Number, Number> chart = ((AppUI)applicationTemplate.getUIComponent()).getChart();
+        chart.getData().clear();
+        dataset.toChartData(chart);
+        ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
+        if(nextCounter>maxIterations){
+            nextButton.setDisable(true);
+            ((AppUI)applicationTemplate.getUIComponent()).getRunButton().setDisable(false);
+            ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
+            ((AppUI)applicationTemplate.getUIComponent()).setRunning(false);
+        }
+    }
     @Override
     public void run() {
         int iteration = 0;
@@ -67,27 +84,49 @@ public class KMeansClusterer extends Clusterer {
                 chart.setAnimated(false);
             }
         });
+        Button nextButton = ((AppUI)applicationTemplate.getUIComponent()).getNextButton();
+        nextCounter = 1;
+        nextButton.setOnAction(e->nextButtonAction());
         initializeCentroids();
-        while (iteration++ < maxIterations & tocontinue.get()) {
-            Platform.runLater(this::assignLabels);
-            Platform.runLater(this::recomputeCentroids);
+        if(!tocontinue.get()){
+            nextButton.setDisable(false);
+            nextCounter+=updateInterval;
+            assignLabels();
+            recomputeCentroids();
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
                     LineChart<Number, Number> chart = ((AppUI)applicationTemplate.getUIComponent()).getChart();
                     chart.getData().clear();
                     dataset.toChartData(chart);
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                 }
             });
+
+            ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
         }
-        ((AppUI)applicationTemplate.getUIComponent()).getRunButton().setDisable(false);
-        ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
-        ((AppUI)applicationTemplate.getUIComponent()).setRunning(false);
+        else{
+            while (iteration++ < maxIterations) {
+                assignLabels();
+                recomputeCentroids();
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        LineChart<Number, Number> chart = ((AppUI)applicationTemplate.getUIComponent()).getChart();
+                        chart.getData().clear();
+                        dataset.toChartData(chart);
+                    }
+
+                });
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            ((AppUI)applicationTemplate.getUIComponent()).getRunButton().setDisable(false);
+            ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
+            ((AppUI)applicationTemplate.getUIComponent()).setRunning(false);
+        }
 
     }
 
@@ -102,7 +141,6 @@ public class KMeansClusterer extends Clusterer {
             chosen.add(instanceNames.get(i));
         }
         centroids = chosen.stream().map(name -> dataset.getLocations().get(name)).collect(Collectors.toList());
-        tocontinue.set(true);
     }
 
     private void assignLabels() {
@@ -122,7 +160,6 @@ public class KMeansClusterer extends Clusterer {
     }
 
     private void recomputeCentroids() {
-        tocontinue.set(false);
         IntStream.range(0, numberOfClusters).forEach(i -> {
             AtomicInteger clusterSize = new AtomicInteger();
             Point2D sum = dataset.getLabels()
@@ -137,7 +174,6 @@ public class KMeansClusterer extends Clusterer {
             Point2D newCentroid = new Point2D(sum.getX() / clusterSize.get(), sum.getY() / clusterSize.get());
             if (!newCentroid.equals(centroids.get(i))) {
                 centroids.set(i, newCentroid);
-                tocontinue.set(true);
             }
         });
 

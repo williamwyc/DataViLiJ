@@ -58,7 +58,7 @@ public class RandomClusterer extends Clusterer {
     }
     private void nextButtonAction(){
         Button nextButton = ((AppUI)applicationTemplate.getUIComponent()).getNextButton();
-        nextCounter+=updateInterval;
+        nextCounter+=1;
         Platform.runLater(this::initialize);
         ((AppUI)applicationTemplate.getUIComponent()).getScrnshotButton().setDisable(false);
         if(nextCounter>maxIterations){
