@@ -247,19 +247,17 @@ public class AppData implements DataComponent {
                 file = fileChooser.showSaveDialog(applicationTemplate.getUIComponent().getPrimaryWindow());
                 if(file!=null) {
                     try {
-
                         FileWriter fileWriter = new FileWriter(file);
                         fileWriter.write(((AppUI) applicationTemplate.getUIComponent()).getTextArea().getText());
                         fileWriter.close();
                         path = Paths.get(file.getPath());
                         ((AppUI)applicationTemplate.getUIComponent()).getSaveButton().setDisable(true);
                     } catch (IOException e) {
-
+                        e.printStackTrace();
                     }
                 }
             }
         }
-        // TODO: NOT A PART OF HW 1
     }
     public Path getPath(){
         return path;
@@ -278,7 +276,4 @@ public class AppData implements DataComponent {
         label.clear();
     }
 
-    public void displayData() {
-        processor.toChartData(((AppUI) applicationTemplate.getUIComponent()).getChart());
-    }
 }
