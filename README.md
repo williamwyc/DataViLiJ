@@ -1,2 +1,2 @@
-Author: Yichun (William) Wu
+Author: Yichun (William) Wu.
 The detailed software design description is in DATAVILIJ™.pdf.
